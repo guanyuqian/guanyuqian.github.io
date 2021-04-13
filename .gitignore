@@ -1,0 +1,16 @@
+# npm copnfig files
+vuepress/node_modules/
+package-lock.json
+
+# Docs dist directory
+vuepress/publish/
+
+# Editors
+.vscode
+.idea
+
+# VuePress temp directory
+.temp
+
+# MacOS desktop services store
+.DS_Store/
