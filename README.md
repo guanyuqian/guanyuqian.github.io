@@ -16,7 +16,8 @@ G-Blog是我的博客页面生成器项目
 │   ├── content (博客内容文件目录)
 │   ├── README.md (博客主页文件)
 │   └── package.json (npm包配置文件)
-├── deploy.sh (部署脚本)
+├── deploy_and_push_contant.sh (部署脚本)
+├── deploy_and_push_contant_with_default.sh (部署脚本，自动填写commit信息)
 └── README.md (本项目的说明文件)
 ```
 ## 关于git提交的约定

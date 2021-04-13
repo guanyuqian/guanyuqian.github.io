@@ -28,5 +28,11 @@ git commit -m 'deploy'
 git push -f git@e.coding.net:guanyuqian/guanyuqian/guanyuqian.git main
 git push -f git@github.com:guanyuqian/guanyuqian.github.io.git main
 
+cd ..
+cd ..
+
+git add .
+git commit .
+git push
 
 cd -

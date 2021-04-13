@@ -27,7 +27,6 @@ git commit -m 'deploy'
 # 前提：配置好电脑提交到 github 和 coding 的 SSH
 git push -f git@e.coding.net:guanyuqian/guanyuqian/guanyuqian.git main
 git push -f git@github.com:guanyuqian/guanyuqian.github.io.git main
-
 # 提交博客内容文档到git
 cd ..
 cd ..
