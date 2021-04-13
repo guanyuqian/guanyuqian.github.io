@@ -1,6 +1,6 @@
 #!/usr/bin/env sh
 
-# 该脚本的功能是一键部署，关于博客更新的内容可以自定义提交信息
+# 该脚本的功能是一键部署并且更新的博客内容到git仓库
 
 # 确保脚本抛出遇到的错误
 set -e
@@ -28,5 +28,12 @@ git commit -m 'deploy'
 git push -f git@e.coding.net:guanyuqian/guanyuqian/guanyuqian.git main
 git push -f git@github.com:guanyuqian/guanyuqian.github.io.git main
 
+# 提交博客内容文档到git
+cd ..
+cd ..
+
+git add .
+git commit -m "docs(content): Added blog content"
+git push
 
 cd -

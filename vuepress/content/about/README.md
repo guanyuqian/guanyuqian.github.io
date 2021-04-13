@@ -1,6 +1,6 @@
 ---
 title: 关于我
-date: 2021-04-13
+date: 2021-04-13 01:06:01
 tags:
 categories:
 sidebar: true
@@ -15,12 +15,12 @@ sidebar: true
 
 
 ##  个人信息 
- - 关钰千/男/1996
+ - Guanyuqian/男/1996
  - 研究生/ECNU SE
  - 工作年限：1年
  - Mail：[yuqianguan@qq.com](mailto:the_sam@foxmail.com)
  - Github：[@guanyuqian ](http://github.com/guanyuqian )
-
+<!-- more -->
 ##  工作经历
 
 ### ABC公司 
