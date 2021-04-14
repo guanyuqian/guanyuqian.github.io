@@ -1,6 +1,6 @@
 # npm copnfig files
 node_modules/
-package-lock.json
+
 
 # Docs dist directory
 docs/

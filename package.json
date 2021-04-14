@@ -1,7 +1,7 @@
 {
   "name": "GBlog",
   "version": "1.0.0",
-  "author": "reco_luan",
+  "author": "Guanyuqian",
   "scripts": {
     "dev": "vuepress dev . --open --host \"localhost\"",
     "build": "vuepress build ."
