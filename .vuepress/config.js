@@ -1,7 +1,7 @@
 module.exports = {
   "title": "G-Blog",
   "description": "go the extra mile.",
-  "dest": "publish",
+  "dest": "docs",
   "head": [
     [
       "link",

@@ -1,9 +1,9 @@
 # npm copnfig files
-vuepress/node_modules/
+node_modules/
 package-lock.json
 
 # Docs dist directory
-vuepress/publish/
+docs/
 
 # Editors
 .vscode
