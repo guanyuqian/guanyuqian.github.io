@@ -5,6 +5,7 @@ install:
   - npm ci
 script:
   - npm run build
+  - echo 'www.guanyuqian.com' > CNAME
 deploy:
   provider: pages
   skip_cleanup: true
