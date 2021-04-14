@@ -6,6 +6,24 @@ install:
 script:
   - npm run build
   - echo 'www.guanyuqian.com' > CNAME
+
+after_script:
+  - cd docs
+  - git init
+  - git config --global user.name "Guanyuqian"    #gh-pages显示发布的名字
+  - git config --global user.email "the_sam@foxmail.com"
+  - git add .
+  - git commit -m "第 $TRAVIS_BUILD_NUMBER 次上传更新我的文档"
+  # Github 
+  - git push --force --quiet "https://${GITHUB_TOKEN}@github.com/guugg/blog.git" master:gh-pages
+  
+  # Coding 
+  - git push --force --quiet "https://guanyuqian:${CODING_TOKEN}@git.coding.net/guanyuqian/guanyuqian.coding.me.git" master:master
+  - git tag v0.0.$TRAVIS_BUILD_NUMBER -a -m "由TravisCI自动标记$TRAVIS_BUILD_NUMBER次"
+  # Github
+  - git push --quiet "https://${GITHUB_TOKEN}@github.com/guugg/blog.git" master:gh-pages --tags
+  # Coding
+  - git push --quiet "https://guanyuqian:${CODING_TOKEN}@git.coding.net/guanyuqian/guanyuqian.coding.me.git" master:master --tags
 deploy:
   provider: pages
   skip_cleanup: true
