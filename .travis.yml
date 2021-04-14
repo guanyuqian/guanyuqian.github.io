@@ -5,7 +5,8 @@ install:
   - npm ci
 script:
   - npm run build
-  - echo 'www.guanyuqian.com' > CNAME
+  # github自动链接外部域名
+  - echo 'www.guanyuqian.com' > docs/CNAME
 
 after_script:
   - cd docs
