@@ -15,15 +15,14 @@ after_script:
   - git add .
   - git commit -m "第 $TRAVIS_BUILD_NUMBER 次上传更新我的文档"
   # Github 
-  - git push --force --quiet "https://${GITHUB_TOKEN}@github.com/guugg/blog.git" master:gh-pages
-  https://e.coding.net/guanyuqian/guanyuqian.coding.me/guanyuqian.coding.me.git
+  - git push --force --quiet "https://${GITHUB_TOKEN}@github.com/guanyuqian/guanyuqian.github.io.git" master:gh-pages
   # Coding 
-  - git push --force --quiet "https://guanyuqian:${CODING_TOKEN}@e.coding.net/guanyuqian.coding.me/guanyuqian.coding.me.git" master:master
+  - git push --force --quiet "https://guanyuqian:${CODING_TOKEN}@e.coding.net/guanyuqian/guanyuqian.coding.me/guanyuqian.coding.me.git" master:gh-pages
   - git tag v0.0.$TRAVIS_BUILD_NUMBER -a -m "由TravisCI自动标记$TRAVIS_BUILD_NUMBER次"
   # Github
-  - git push --quiet "https://${GITHUB_TOKEN}@github.com/guugg/blog.git" master:gh-pages --tags
+  - git push --quiet "https://${GITHUB_TOKEN}@github.com/guanyuqian/guanyuqian.github.io.git" master:gh-pages --tags
   # Coding
-  - git push --quiet "https://guanyuqian:${CODING_TOKEN}@e.coding.net/guanyuqian.coding.me/guanyuqian.coding.me.git" master:master --tags
+  - git push --quiet "https://guanyuqian:${CODING_TOKEN}@e.coding.net/guanyuqian/guanyuqian.coding.me/guanyuqian.coding.me.git" master:gh-pages --tags
 deploy:
   provider: pages
   skip_cleanup: true
