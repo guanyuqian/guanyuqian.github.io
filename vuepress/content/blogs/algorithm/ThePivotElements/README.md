@@ -2,8 +2,9 @@
 title: 无序数组中找到左侧比他小右侧比他大的数
 date: 2021-04-13 09:06:01
 tags:
- - 面试
+ - 高频题
  - 单调栈
+ - 面试
 categories:
  -  算法题解
 
@@ -35,9 +36,10 @@ publish: true
 第一个条件：用递增单调栈可以满足第一个条件，即得到比它后面所有元素的小的数组。
 
 第一个条件：可以在入栈时判断元素是否比之前的所有元素都大。
+
 解决方法是维护一个已遍历元素的最大值`pre_max`，判断是否比这个值大即可。
 
-## 代码实现
+该方法思路类似这题：[无序数组中找到左侧比他小右侧比他大的数](www.guanyuqian.com/content/blogs/algorithm/findUnsortedSubarray)
 
 ```go
 import "fmt"

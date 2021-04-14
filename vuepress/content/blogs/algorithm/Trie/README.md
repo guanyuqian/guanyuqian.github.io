@@ -59,9 +59,9 @@ trie.search("app");     // 返回 True
 - word 和 prefix 仅由小写英文字母组成
 - insert、search 和 startsWith 调用次数 总计 不超过 3 * 104 次
 
+
+
 ## 思路
-
-
 
 Trie，又称前缀树或字典树，是一棵有根树，其每个节点包含以下字段：
 
@@ -74,7 +74,6 @@ Trie，又称前缀树或字典树，是一棵有根树，其每个节点包含�
 布尔字段 `is_leaf`，表示该节点是否为字符串的结尾。
 
 
-## 代码实现：
 
 ```go
 type TrieNode struct {
