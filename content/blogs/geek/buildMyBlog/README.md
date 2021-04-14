@@ -21,6 +21,11 @@ sidebar: true
 
 这里仅记录我搭建博客选择的方案及其原因。
 <!-- more -->
+
+这是我构建博客的方案架构图。
+
+![方案架构图](./framework.jpg)
+
 ## 第一步，选择框架（VuePress）
 
 之前考虑过许多搭建博客的框架，比如说Hugo、Hexo、WordPress、Jekyll。
@@ -173,6 +178,7 @@ feat(Controller):用户查询接口开发
 │   ├── public (静态资源目录)
 │   ├── styles (主题配置)
 │   └── config.js (配置文件的入口文件)
+├── git_push.sh (一键push脚本)
 ├── content (博客内容文件目录)
 ├── .travis.yml (travis ci 自动部署脚本)
 ├── package.json (npm包配置文件)
