@@ -53,14 +53,17 @@ publish: false
 
 ## 学术成果
 - **Formal Verification of AADL Models by Event-B**
-- *YUQIAN GUAN, JIAN GUO , QIN LI*， **SCI Accepted**
+
+  *YUQIAN GUAN, JIAN GUO , QIN LI*， **SCI Accepted**
+
   提出了一种物联网操作系统的混合模型，并采用Event-B方法进行建模和验证。
   我们重写了需求，并将改混合操作系统模型分为八个层次进行细化。
   在每个模型层次上生成并完成了证明义务，保证了系统的安全性和活性。
   因为精致的验证分析，其中很大一部分证明义务（91%）可以被自动证明的。
-  
+
 - **Adaptive Layered Segregated Fit Scheme for Dynamic Memory Allocation**
-  *YUQIAN GUAN, JIAN GUO *，  **SCI  Accepted**
+  *YUQIAN GUAN, JIAN GUO*，  **SCI  Accepted**
+  
   本文提出了一种适用于DSA的自适应分层分离拟合（Adaptive Layered Segregated Fit, ALSF）算法。ALSF算法结合了动态二维数组和位图，在恒定的执行时间内完成内存块的分配和释放，并利用内存分割技术减少内部碎片。该方案还通过分析系统对不同内存大小的分配来调整分离列表的数目，提高了内存块的匹配精度。我们在Zephyr OS中对ALSF和两级分离拟合（TLSF）方案进行了对比实验分析和研究。实验表明，该方案的平均内存利用率达到94.95%。与TLSF方案相比，该方案在内存不足的情况下，分配成功率提高了12.99%。
 
 
