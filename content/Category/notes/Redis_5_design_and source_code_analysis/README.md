@@ -42,7 +42,7 @@ sidebar: true
 
 ## 第二章 简单动态字符串 
 
-<img src="./sds.png" alt="SDS" style="zoom:75%;" />
+<img src=".\sds.png" alt="SDS" style="zoom:75%;" />
 
 ​	**SDS优点**
 
@@ -77,7 +77,7 @@ SDS在涉及字符串修改处会调用sdsMakeroomFor函数进行检查，类似
 
 ## 第三章 跳跃表
 
-<img src="./skip_list.png" alt="img" style="zoom:75%;" />
+<img src=".\skip_list.png" alt="img" style="zoom:75%;" />
 
 跳跃表是Redis有序集合的一种实现方式，特点是平均操作效率接近红黑树O(logN)，但实现比红黑树简单。
 
@@ -112,7 +112,7 @@ Redis的有序集合、散列和列表都直接或者间接采用了压缩列表
 
 压缩列表ziplist本质上是一个柔性数组的数组，每个entry数据都是一个柔性数组，和sds类似。
 
-<img src="./ziplist.png" alt="img" style="zoom:75%;" />
+<img src=".\ziplist.png" alt="img" style="zoom:100%;" />
 
 压缩列表以时间换空间，把所有的数据压缩在一块连续的内存区域中。
 
@@ -127,7 +127,7 @@ Redis的有序集合、散列和列表都直接或者间接采用了压缩列表
 - zllen（元素个数）
 - entryX（压缩元素）
 
-<img src="./entry_ziplist.png" alt="img" style="zoom:75%;" />
+<img src=".\entry_ziplist.png" alt="img" style="zoom:100%;" />
 
 - zlend（结尾占位符）
 
@@ -175,7 +175,7 @@ Redis3.2之前的列表实现方式：Redis采用ziplist和双向链表来实现
 
 Redis3.2之后的列表采用快速列表quicklist进行实现，快速列表是ziplist和adlist的结合数据结构，最外层是adlist，其中的节点是ziplist。快速列表支持压缩算法对数据进行进一步的压缩。
 
-<img src="quicklist.jpg" alt="img" style="zoom: 67%;" />
+<img src="quicklist.jpg" alt="img" style="zoom: 80%;" />
 
 快速列表的增删改查操作就是对具体的每个节点的ziplist进行的增删改查。
 
@@ -214,14 +214,14 @@ Stream应用到的特殊数据结构：
 
 - listpack：批量存储消息，Stream用消息包（listpack）结构体存储消息，listpack中包含多个消息（entryX)，并且按照一定的规则对它们进行了压缩。
 
-<img src="listpack.png" alt="img" style="zoom:20%;" />
+<img src=".\listpack.png" alt="img" style="zoom:20%;" />
 
 - rax：rax是基数树（压缩前缀树）
 
 - - stream的消息队列：以消息ID为key，listpack为value，listpack中包含多条消息，因为消息ID是严格递增的，所以key应该是listpack中的第一条消息的ID。
   - 消费组的pel：以消息ID为key，streamNACK为value。
 
-![img](./rax.png)
+<img src=".\rax.png" alt="img" style="zoom:50%;" />
 
 ## 第九章 命令处理生命周期
 
@@ -249,11 +249,11 @@ redis把所有可执行的命令用redisCommand维护
 
 - **robj是key-value数据库中的value：**存储Redis中的key-value对，key只能是字符串，value为对象结构体robj，可以是字符串、列表、集合、有序集合和散列表，这5种数据类型。
 
-<img src=".\robj.png" alt="img" style="zoom:75%;" />
+<img src=".\robj.png" alt="img" style="zoom: 80%;" />
 
 - **每种数据类型有多重实现方式：**每种数据类型可以有多种不同的实现方式，这些实现方式是根据数据类型的变化而自动改变的。
 
-<img src=".\reflect.png" alt="img" style="zoom:75%;" />
+<img src=".\reflect.png" alt="img" style="zoom: 67%;" />
 
 - **引用计数：**通过refcount引用计数方法，可以实现对象共享。
 - **LRU策略：**在robj结构体中增加lru辅助字段，实现对对象的LRU缓存淘汰策略。
@@ -262,7 +262,7 @@ redis把所有可执行的命令用redisCommand维护
 
 - - **raw编码：**先申请对象结构体robj的内存，然后再申请实现结构体的内存，通过robj中的指针指向结构体内存。
 
-<img src=".\raw.png" alt="img" style="zoom:75%;" />
+<img src=".\raw.png" alt="img" style="zoom: 67%;" />
 
 - - **embstr编码：**当sds比较小时（比如sdshdr8），即可采用embstr编码将sds和robj相邻存储，将两次内存分配（robj、sds）缩短为一次（robj+sds）。
 
@@ -279,7 +279,7 @@ redis把所有可执行的命令用redisCommand维护
 
 **Server的启动过程**
 
-<img src=".\server.png" alt="img" style="zoom:75%;" />
+<img src=".\server.png" alt="img" style="zoom: 50%;" />
 
 **命令处理过程**
 
