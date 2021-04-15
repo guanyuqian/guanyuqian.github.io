@@ -50,7 +50,7 @@ module.exports = {
       {
         "text": "About",
         "icon": "reco-account",
-        "link": "/content/about/" 
+        "link": "/content/About/" 
       },
       {
         "text": "Contact",
