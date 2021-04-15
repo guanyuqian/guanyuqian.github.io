@@ -3,7 +3,7 @@ title: 494. 目标和
 date: 2021-04-14 14:58:01
 tags:
  - 动态规划
- - Hot100
+ - 高频题
  - LeetCode
 categories:
  -  算法题解
