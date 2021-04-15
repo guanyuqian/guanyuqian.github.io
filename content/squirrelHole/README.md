@@ -1,15 +1,15 @@
 ---
-title: 松鼠洞
-date: 2021-04-13
-tags:
+title: 松鼠洞洞规
+author: 花栗鼠
+sticky : 0
 categories:
  -  松鼠洞
 sidebar: false
-# 是否发布
-publish: true
-# 文档加密，md5加密的32位密文
-# keys:
-# 	- 'e10adc3949ba59abbe56e057f20f883e'
 ---
 
-## 这是松鼠洞的入口
+![bg](/hero.jpg)
+
+这里是松鼠洞，花栗鼠记录日常的地方。
+
+<!-- more -->
+<!-- 加入这个代码，该位置以上内容会出现在摘要中。 -->
