@@ -42,7 +42,7 @@ sidebar: true
 
 ## 第二章 简单动态字符串 
 
-<img src=".\sds.png" alt="SDS" style="zoom:75%;" />
+<img src="./sds.png" alt="SDS" style="zoom:75%;" />
 
 ​	**SDS优点**
 
@@ -77,7 +77,7 @@ SDS在涉及字符串修改处会调用sdsMakeroomFor函数进行检查，类似
 
 ## 第三章 跳跃表
 
-<img src=".\skip_list.png" alt="img" style="zoom:75%;" />
+<img src="./skip_list.png" alt="img" style="zoom: 90%;" />
 
 跳跃表是Redis有序集合的一种实现方式，特点是平均操作效率接近红黑树O(logN)，但实现比红黑树简单。
 
@@ -112,7 +112,7 @@ Redis的有序集合、散列和列表都直接或者间接采用了压缩列表
 
 压缩列表ziplist本质上是一个柔性数组的数组，每个entry数据都是一个柔性数组，和sds类似。
 
-<img src=".\ziplist.png" alt="img" style="zoom:100%;" />
+<img src="./ziplist.png" alt="img" style="zoom:100%;" />
 
 压缩列表以时间换空间，把所有的数据压缩在一块连续的内存区域中。
 
@@ -127,7 +127,7 @@ Redis的有序集合、散列和列表都直接或者间接采用了压缩列表
 - zllen（元素个数）
 - entryX（压缩元素）
 
-<img src=".\entry_ziplist.png" alt="img" style="zoom:100%;" />
+<img src="./entry_ziplist.png" alt="img" style="zoom:100%;" />
 
 - zlend（结尾占位符）
 
@@ -175,7 +175,7 @@ Redis3.2之前的列表实现方式：Redis采用ziplist和双向链表来实现
 
 Redis3.2之后的列表采用快速列表quicklist进行实现，快速列表是ziplist和adlist的结合数据结构，最外层是adlist，其中的节点是ziplist。快速列表支持压缩算法对数据进行进一步的压缩。
 
-<img src="quicklist.jpg" alt="img" style="zoom: 80%;" />
+<img src="./quicklist.jpg" alt="img" style="zoom: 80%;" />
 
 快速列表的增删改查操作就是对具体的每个节点的ziplist进行的增删改查。
 
@@ -187,7 +187,7 @@ Redis3.2之后的列表采用快速列表quicklist进行实现，快速列表是
 
 Redis在5.0版本引入了**消息队列**的实现，即Stream组件。
 
-<img src="stream.png" alt="img" style="zoom:30%;" />
+<img src="./stream.png" alt="img" style="zoom:30%;" />
 
 Redis之前实现pub/sub模式，但是不实用，故设计Stream。Stream的优势在于：
 
@@ -214,14 +214,14 @@ Stream应用到的特殊数据结构：
 
 - listpack：批量存储消息，Stream用消息包（listpack）结构体存储消息，listpack中包含多个消息（entryX)，并且按照一定的规则对它们进行了压缩。
 
-<img src=".\listpack.png" alt="img" style="zoom:20%;" />
+<img src="./listpack.png" alt="img" style="zoom:20%;" />
 
 - rax：rax是基数树（压缩前缀树）
 
 - - stream的消息队列：以消息ID为key，listpack为value，listpack中包含多条消息，因为消息ID是严格递增的，所以key应该是listpack中的第一条消息的ID。
   - 消费组的pel：以消息ID为key，streamNACK为value。
 
-<img src=".\rax.png" alt="img" style="zoom:50%;" />
+<img src="./rax.png" alt="img" style="zoom:50%;" />
 
 ## 第九章 命令处理生命周期
 
@@ -249,11 +249,11 @@ redis把所有可执行的命令用redisCommand维护
 
 - **robj是key-value数据库中的value：**存储Redis中的key-value对，key只能是字符串，value为对象结构体robj，可以是字符串、列表、集合、有序集合和散列表，这5种数据类型。
 
-<img src=".\robj.png" alt="img" style="zoom: 80%;" />
+<img src="./robj.png" alt="img" style="zoom: 80%;" />
 
 - **每种数据类型有多重实现方式：**每种数据类型可以有多种不同的实现方式，这些实现方式是根据数据类型的变化而自动改变的。
 
-<img src=".\reflect.png" alt="img" style="zoom: 67%;" />
+<img src="./reflect.png" alt="img" style="zoom: 67%;" />
 
 - **引用计数：**通过refcount引用计数方法，可以实现对象共享。
 - **LRU策略：**在robj结构体中增加lru辅助字段，实现对对象的LRU缓存淘汰策略。
@@ -262,11 +262,11 @@ redis把所有可执行的命令用redisCommand维护
 
 - - **raw编码：**先申请对象结构体robj的内存，然后再申请实现结构体的内存，通过robj中的指针指向结构体内存。
 
-<img src=".\raw.png" alt="img" style="zoom: 67%;" />
+<img src="./raw.png" alt="img" style="zoom: 67%;" />
 
 - - **embstr编码：**当sds比较小时（比如sdshdr8），即可采用embstr编码将sds和robj相邻存储，将两次内存分配（robj、sds）缩短为一次（robj+sds）。
 
-<img src=".\embstr.png" alt="img" style="zoom:75%;" />
+<img src="./embstr.png" alt="img" style="zoom:75%;" />
 
 **事件处理**
 
@@ -279,7 +279,7 @@ redis把所有可执行的命令用redisCommand维护
 
 **Server的启动过程**
 
-<img src=".\server.png" alt="img" style="zoom: 50%;" />
+<img src="./server.png" alt="img" style="zoom: 50%;" />
 
 **命令处理过程**
 
@@ -290,11 +290,11 @@ TCP协议会出现半包和沾包问题，
 - Redis通过自定义传输格式的功能识别TCP的数据包。
 - 在客户端client结构中会存储待解析的命令相关信息，解决半包和粘包造成的命令不全问题。
 
-<img src=".\tcp.png" alt="img" style="zoom: 80%;" />
+<img src="./tcp.png" alt="img" style="zoom: 80%;" />
 
 命令处理过程的流程图如下
 
-<img src=".\command.png" alt="img" style="zoom:75%;" />
+<img src="./command.png" alt="img" style="zoom:75%;" />
 
 Redis服务端将待返回的结构存储在客户端的输出缓存区或者输出链表中，随着TCP协议打包返回给客户端。这个过程发生在每次等待文件事件之前的beforesleep函数中。由于返回结果可能会很大，不能一次全部发送给客户端，所以需要通过添加返回结果的写文件事件，通过写文件事件来执行未在beforesleep函数中完成的结果返回任务。
 
@@ -304,7 +304,7 @@ Redis服务端将待返回的结构存储在客户端的输出缓存区或者输
 
 - redisObject：是前面介绍的robj对象，它的结构如下。
 
-<img src=".\robj_struct.png" alt="img" style="zoom:50%;" />
+<img src="./robj_struct.png" alt="img" style="zoom:50%;" />
 
 - redisDB：Redis对数据库的封装，用来管理数据库相关数据和操作。
 
@@ -404,7 +404,7 @@ Redis服务端将待返回的结构存储在客户端的输出缓存区或者输
 
 - 堆栈命令，值得注意的是列表有阻塞操作，即BLPOP和BRPOP，如果没有成功，则请求的客户端会被放入redisDb的阻塞字典中，待阻塞超时或者满足的资源被提供时才被唤醒。
 
-<img src=".\command2.png" alt="img" style="zoom:50%;" />
+<img src="./command2.png" alt="img" style="zoom:50%;" />
 
 - 获取列表数据：lindex、lrange、llen
 - 操作命令：lset、linsert、lrem、ltrim
@@ -438,7 +438,7 @@ Redis服务端将待返回的结构存储在客户端的输出缓存区或者输
 - ziplist：如果数据较少或者数据长度不是很长
 - dict + skiplist：在单个元素的定位使用dict来让复杂度降到O(1)
 
-<img src=".\order_list.png" alt="img" style="zoom:50%;" />
+<img src="./order_list.png" alt="img" style="zoom:50%;" />
 
 有序集合的值会有score和member两个参数，分布代表排序相关的分数和值
 
@@ -452,7 +452,7 @@ geohash是在2008年公开的位置处理算法，能将二维的经纬度信息
 
 - z阶曲线把二维标拼接用二进制进行存储，对二进制进行Base32编码可以节约存储空间。
 
-<img src=".\z.png" alt="img" style="zoom: 33%;" />
+<img src="./z.png" alt="img" style="zoom: 33%;" />
 
 - geohash算法的相关操作
 
@@ -503,7 +503,7 @@ Redis是一个内存数据库，执行持久化时会生成子线程来完成持
 
 ## 第二十一章 主从复制
 
-<img src=".\master_slave.png" alt="img" style="zoom:38%;" />
+<img src="./master_slave.png" alt="img" style="zoom:38%;" />
 
 主从复制的最基础应用是主从模式，区别于Redis的单机模式，这里列举一下单机模式的优缺点
 
@@ -540,7 +540,7 @@ Redis是一个内存数据库，执行持久化时会生成子线程来完成持
 
 选择执行主从复制的流程
 
-<img src=".\process.png" alt="img" style="zoom:38%;" />
+<img src="./process.png" alt="img" style="zoom:38%;" />
 
 提升主从复制效率：
 
@@ -551,7 +551,7 @@ Redis是一个内存数据库，执行持久化时会生成子线程来完成持
 
 哨兵模式：基于主从模式，哨兵模式增加了一个或多个哨兵服务器组成哨兵系统，哨兵系统可以监视所有数据服务器的运行状态，如果检测主服务器运行出现问题，可以重新选择从服务升级为主服务器。
 
-<img src="C:\Users\Administrator\Desktop\G-Blog\content\Category\notes\Redis_5_design_and source_code_analysis\sentinel.png" alt="img" style="zoom:38%;" />
+<img src="./sentinel.png" alt="img" style="zoom:38%;" />
 
 优点：
 
@@ -587,7 +587,7 @@ Sentinel的工作方式:
 
 集群模式：通过数据分片的方式，让不同的主从服务群能够处理不同的数据，以突破单一主服务器性能限制。
 
-<img src=".\cluster.png" alt="img" style="zoom:38%;" />
+<img src="./cluster.png" alt="img" style="zoom:38%;" />
 
 优点：
 
