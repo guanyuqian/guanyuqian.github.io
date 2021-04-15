@@ -38,22 +38,27 @@ module.exports = {
     "subSidebar": "auto",//在所有页面中启用自动生成子侧边栏，原 sidebar 仍然兼容
     "nav": [
       {
-        "text": "Home",
+        "text": "主页",
         "link": "/",
         "icon": "reco-home"
       },
       {
-        "text": "TimeLine",
+        "text": "松鼠洞",
+        "link": "/categories/松鼠洞/",
+        "icon": "reco-gitlab"
+      },
+      {
+        "text": "时间轴",
         "link": "/timeline/",
         "icon": "reco-date"
       },
       {
-        "text": "About",
+        "text": "关于",
         "icon": "reco-account",
-        "link": "/content/About/" 
+        "link": "/content/about/" 
       },
       {
-        "text": "Contact",
+        "text": "我的",
         "icon": "reco-message",
         "items": [
           {
@@ -73,11 +78,11 @@ module.exports = {
     "blogConfig": {
       "category": {
         "location": 2,
-        "text": "Category"
+        "text": "分类"
       },
       "tag": {
         "location": 3,
-        "text": "Tag"
+        "text": "标签"
       }
     },
     "friendLink": [
