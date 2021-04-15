@@ -16,50 +16,58 @@ publish: false
 
 ##  个人信息 
  - Guanyuqian/男/1996
+
  - 研究生/ECNU SE
+
  - 工作年限：1年
+
  - Mail：[yuqianguan@qq.com](mailto:the_sam@foxmail.com)
+
  - Github：[@guanyuqian ](http://github.com/guanyuqian )
-<!-- more -->
+
+
+  <!-- more -->
+
 ##  工作经历
 
-### ABC公司 
-（ 2012年9月 ~ 2014年9月 ）
+### 华为
 
-#### DEF项目 
-我在此项目负责了哪些工作，分别在哪些地方做得出色/和别人不一样/成长快，这个项目中，我最困难的问题是什么，我采取了什么措施，最后结果如何。这个项目中，我最自豪的技术细节是什么，为什么，实施前和实施后的数据对比如何，同事和领导对此的反应如何。
+2020年6月 ~ 2020年8月 
 
-#### DEF项目 
-我在此项目负责了哪些工作，分别在哪些地方做得出色/和别人不一样/成长快，这个项目中，我最困难的问题是什么，我采取了什么措施，最后结果如何。这个项目中，我最自豪的技术细节是什么，为什么，实施前和实施后的数据对比如何，同事和领导对此的反应如何。
+#### DDS中间件
+
+进行车载操作系统中间件数据分发服务(Data Distribution Service, DDS) 的研发工作，本人负责一个功能模块的实现。模块有对应的开源版本，要求改变设计模式、使用 ISO C++新特性进行编写、并设计代码行覆盖率 100%的 UT。其中遇到异常情况无法触发的问题，经过调研，使用了对代码打桩进行解决。工作期间与同事交流技术细节，同事对我的评价是基础功不错。
+
+### 东方海外
+
+2017年6月 ~ 2017年10月
+
+#### 数据可视化网站研发
+
+负责公司一个数据可视化网站的研发工作。使用node js + jq + mongodb全栈开发。遇到的问题是入职前没接触过 node js 相关技术，在入职后的一周内结合项目代码进行快速的学习，掌握了相关的开发能力。
+
+<!-- ## 开源项目 -->
 
 
 
-## 开源项目和作品
-（这一段用于放置工作以外的、可证明你的能力的材料）
 
-### 开源项目
-（对于程序员来讲，没有什么比Show me the code能有说服力了）
-
-  - [STU](http://github.com/yourname/projectname)：项目的简要说明，Star和Fork数多的可以注明
-  - [WXYZ](http://github.com/yourname/projectname)：项目的简要说明，Star和Fork数多的可以注明
-
-### 技术文章
-（挑选你写作或翻译的技术文章，好的文章可以从侧面证实你的表达和沟通能力，也帮助招聘方更了解你）
-
-- [一个产品经理眼中的云计算：前生今世和未来](http://get.jobdeer.com/706.get)
-- [来自HeroKu的HTTP API 设计指南(翻译文章)](http://get.jobdeer.com/343.get) （ 好的翻译文章可以侧证你对英文技术文档的阅读能力）
+## 学术成果
+- **Formal Verification of AADL Models by Event-B**
+- *YUQIAN GUAN, JIAN GUO , QIN LI*， **SCI Accepted**
+  提出了一种物联网操作系统的混合模型，并采用Event-B方法进行建模和验证。
+  我们重写了需求，并将改混合操作系统模型分为八个层次进行细化。
+  在每个模型层次上生成并完成了证明义务，保证了系统的安全性和活性。
+  因为精致的验证分析，其中很大一部分证明义务（91%）可以被自动证明的。
+  
+- **Adaptive Layered Segregated Fit Scheme for Dynamic Memory Allocation**
+  *YUQIAN GUAN, JIAN GUO *，  **SCI  Accepted**
+  本文提出了一种适用于DSA的自适应分层分离拟合（Adaptive Layered Segregated Fit, ALSF）算法。ALSF算法结合了动态二维数组和位图，在恒定的执行时间内完成内存块的分配和释放，并利用内存分割技术减少内部碎片。该方案还通过分析系统对不同内存大小的分配来调整分离列表的数目，提高了内存块的匹配精度。我们在Zephyr OS中对ALSF和两级分离拟合（TLSF）方案进行了对比实验分析和研究。实验表明，该方案的平均内存利用率达到94.95%。与TLSF方案相比，该方案在内存不足的情况下，分配成功率提高了12.99%。
 
 
 ## 技能清单
-
-以下均为我熟练使用的技能
-
-- Web开发：PHP/Hack/Node
-- Web框架：ThinkPHP/Yaf/Yii/Lavarel/LazyPHP
-- 前端框架：Bootstrap/AngularJS/EmberJS/HTML5/Cocos2dJS/ionic
-- 前端工具：Bower/Gulp/SaSS/LeSS/PhoneGap
-- 数据库相关：MySQL/PgSQL/PDO/SQLite
-- 版本管理、文档和自动化部署工具：Svn/Git/PHPDoc/Phing/Composer
-- 单元测试：PHPUnit/SimpleTest/Qunit
-- 云和开放平台：SAE/BAE/AWS/微博开放平台/微信应用开发
+- 语言：golang、c++~~、python、shell~~
+- 数据库：mysql、redis~~、mongodb~~
+- 消息队列：~~RocketMQ，kafka、nsq~~
+- RPC：~~thrift、gRPC~~
+- 框架：~~gin、gorm、go-redis~~
 
