@@ -8,10 +8,10 @@ categories:
  -  个人总结
 sidebar: true
 # 是否发布
-publish: false
+publish: true
 # 文档加密，md5加密的32位密文
-# keys:
-# 	- 'e10adc3949ba59abbe56e057f20f883e'
+keys:
+ - 'e10adc3949ba59abbe56e057f20f883e'
 ---
 
 实验室所有的师弟师妹：
