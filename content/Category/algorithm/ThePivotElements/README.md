@@ -24,6 +24,7 @@ publish: true
 2. 该元素比放在它前面的所有元素都大。
 <!-- more -->
 
+```
 举例：
 
 1,2,3,1,2,0,5,6 ： 输出5,6
@@ -31,8 +32,9 @@ publish: true
 1,2,3,1,2,0,5,5 ： 输出5（第一个5）
 
 1,2,3,4,5,6,7 ： 输出1,2,3,4,5,6,7 
+```
 
-## 思路
+## 解法
 
 第一个条件：用递增单调栈可以满足第一个条件，即得到比它后面所有元素的小的数组。
 
@@ -40,7 +42,7 @@ publish: true
 
 解决方法是维护一个已遍历元素的最大值`pre_max`，判断是否比这个值大即可。
 
-该方法思路类似这题：[无序数组中找到左侧比他小右侧比他大的数](www.guanyuqian.com/content/blogs/algorithm/findUnsortedSubarray)
+该方法解法类似这题：[无序数组中找到左侧比他小右侧比他大的数](www.guanyuqian.com/content/blogs/algorithm/findUnsortedSubarray)
 
 ```go
 import "fmt"

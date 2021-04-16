@@ -2,16 +2,7 @@ module.exports = {
   "title": "G-Blog",
   "description": "go the extra mile.",
   "dest": "docs",
-  plugins: {
-    '@vuepress/medium-zoom': {
-      selector: 'img.zoom-custom-imgs',
-      // medium-zoom options here
-      // See: https://github.com/francoischalifour/medium-zoom#options
-      options: {
-        margin: 16
-      }
-    }
-  },
+  "plugins": ['vuepress-plugin-medium-zoom'],
   "head": [
     [
       "link",

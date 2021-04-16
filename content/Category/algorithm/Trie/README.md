@@ -34,7 +34,7 @@ Trie（发音类似 "try"）或者说 前缀树 是一种树形数据结构，�
 > 来源：力扣（LeetCode）
 > 链接：https://leetcode-cn.com/problems/implement-trie-prefix-tree
 
-## 示例：
+## 示例
 ```
 输入
 ["Trie", "insert", "search", "search", "startsWith", "insert", "search"]
@@ -52,7 +52,7 @@ trie.insert("app");
 trie.search("app");     // 返回 True
 ```
 
-## 提示：
+## 提示
 
 - 1 <= word.length, prefix.length <= 2000
 - word 和 prefix 仅由小写英文字母组成
@@ -60,7 +60,7 @@ trie.search("app");     // 返回 True
 
 
 
-## 思路
+## 解法
 
 ![trie](./trie.png)
 Trie，又称前缀树或字典树，是一棵有根树，其每个节点包含以下字段：

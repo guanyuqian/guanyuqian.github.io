@@ -29,8 +29,8 @@ publish: true
 > 来源：力扣（LeetCode）
 > 链接：https://leetcode-cn.com/problems/shortest-unsorted-continuous-subarray/
 
-## 示例：
-```bash
+## 示例
+```
 输入：nums = [2,6,4,8,10,9,15]
 输出：5
 解释：你只需要对 [6, 4, 8, 10, 9] 进行升序排序，那么整个表都会变为升序排序。
@@ -42,14 +42,14 @@ publish: true
 输出：0
 ```
 
-## 提示：
+## 提示
 
 - `1 <= nums.length <= 104`
 - `-105 <= nums[i] <= 105`
 
 
 
-## 思路1（单调栈）
+## 解法1（单调栈）
 
 | 时间复杂度 | 空间复杂度 |
 | ---------- | ---------- |
@@ -61,7 +61,7 @@ publish: true
 
 记录前序子数组中的最大值`preMax`，满足`nums[i] > preMax`才入栈，否则说明当前元素仍处于乱序子数组之中。
 
-该方法思路类似这题： [无序数组中找到左侧比他小右侧比他大的数](www.guanyuqian.com/content/blogs/algorithm/ThePivotElements)
+该方法解法类似这题： [无序数组中找到左侧比他小右侧比他大的数](www.guanyuqian.com/content/blogs/algorithm/ThePivotElements)
 
 
 
@@ -88,7 +88,7 @@ func findUnsortedSubarray(nums []int) int {
 
 
 
-## 思路2（贪心）
+## 解法2（贪心）
 
 | 时间复杂度 | 空间复杂度 |
 | ---------- | ---------- |
