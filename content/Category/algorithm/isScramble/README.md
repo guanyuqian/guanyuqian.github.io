@@ -1,9 +1,11 @@
 ---
-title: 208. 打家劫舍Ⅰ、Ⅱ、Ⅲ
+title: 87. 扰乱字符串
 date: 2021-04-16 12:32:35
 tags:
  - 区间动态规划
  - 记忆化递归
+ - 递归
+ - 动态规划
  - LeetCode
 categories:
  -  算法题解
@@ -21,8 +23,6 @@ publish: true
 
 ## 题目描述
 
-> 来源：力扣（LeetCode）
-> 链接：https://leetcode-cn.com/problems/scramble-string
 
 给你两个 长度相等 的字符串 s1 和 s2，判断 s2 是否是 s1 的扰乱字符串。如果是，返回 true ；否则，返回 false 。
 
@@ -38,6 +38,8 @@ publish: true
 - 随机 决定是要「交换两个子字符串」还是要「保持这两个子字符串的顺序不变」。即，在执行这一步骤之后，s 可能是 s = x + y 或者 s = y + x 。
 - 在 x 和 y 这两个子字符串上继续从步骤 1 开始递归执行此算法。
 
+> 来源：力扣（LeetCode）
+> 链接：https://leetcode-cn.com/problems/scramble-string
 
 
 ## 示例
@@ -130,15 +132,15 @@ func hashCode(str string) (res int) {
 
 这题也可以用区间做，可以看成`dp[i][j][len]`为`s1[i: i + len]` 与`s2[j: j + len]`是否互为扰乱字符串，这样就可以得到公式：
 
-
 $$
 dp[i][j][len] =
 \begin{cases}
-s1[i] == s2[j]& \text{len == 1
-}\\ \\
-\exist k  \cdot dp[i][j][k] \land dp[i + k][j + k][len - k] \lor & \text{len > 1} \\ dp[i][j + len - k][k] \land  dp[i + k][j][len - k]
+s1[i] == s2[j]& \text{len == 1}\\ \\
+    \exists k   \cdot dp[i][j][k] \land  dp[i + k][j + k][len - k]  \lor \\ dp[i][j + len - k][k] \land  dp[i + k][j][len - k] &  \text{otherwise}
 \end{cases}
 $$
+
+实现代码如下：
 
 
 

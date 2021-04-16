@@ -2,6 +2,16 @@ module.exports = {
   "title": "G-Blog",
   "description": "go the extra mile.",
   "dest": "docs",
+  plugins: {
+    '@vuepress/medium-zoom': {
+      selector: 'img.zoom-custom-imgs',
+      // medium-zoom options here
+      // See: https://github.com/francoischalifour/medium-zoom#options
+      options: {
+        margin: 16
+      }
+    }
+  },
   "head": [
     [
       "link",
@@ -41,11 +51,6 @@ module.exports = {
         "text": "主页",
         "link": "/",
         "icon": "reco-home"
-      },
-      {
-        "text": "松鼠洞",
-        "link": "/categories/松鼠洞/",
-        "icon": "reco-gitlab"
       },
       {
         "text": "时间轴",
@@ -109,7 +114,32 @@ module.exports = {
     "startYear": 2021,
     "noFoundPageByTencent": false,
   },
-  "markdown": {
-    "lineNumbers": true
-  }
+  markdown: {
+    "lineNumbers": true,
+    // markdown-it-anchor 的选项
+    // anchor: { permalink: false },
+    // // markdown-it-toc 的选项
+    // toc: { includeLevel: [1, 2] },
+    extendMarkdown: md => {
+      // 使用更多的 markdown-it 插件!
+            md.set({
+                html: true
+            })
+            md.use(require('markdown-it-katex'))
+    },
+    config: md => {
+      // 使用更多的 markdown-it 插件!
+            md.use(require('markdown-it-katex'))
+    }
+  },
+  head: [
+        ['link', {
+            rel: 'stylesheet',
+            href: 'https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.7.1/katex.min.css'
+        }],
+        ['link', {
+            rel: "stylesheet",
+            href: "https://cdnjs.cloudflare.com/ajax/libs/github-markdown-css/2.10.0/github-markdown.min.css"
+        }]
+    ]
 }

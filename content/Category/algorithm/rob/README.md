@@ -79,15 +79,16 @@ publish: true
 
 ### 打家劫舍Ⅰ、Ⅱ
 
-前两题的思路是动态规划，转移方程均为：
-$$
-dp[i]=
+
+
+前两题的思路是动态规划，转移方程均为： 
+
+$$dp[i]=
 \begin{cases}
-nums[i]& \text{只有一间房屋，则偷窃该房屋
-}\\
-max(dp[i−2]+nums[i],dp[i−1])& \text{只有两间房屋，偷窃其中金额较高的房屋}
+nums[i] & \text{one room only}\\
+max(dp[i-2]+nums[i] , dp[i - 1])& \text{otherwise}
 \end{cases}$$
-$$
+
 区别是第二题是唤醒数组，如何才能保证第一间房屋和最后一间房屋不同时偷窃呢？这里进行分类讨论。
 
 - 如果偷窃了第一间房屋，则不能偷窃最后一间房屋，因此偷窃房屋的范围是第一间房屋到最后第二间房屋；
@@ -123,6 +124,8 @@ func rob(nums []int) int {
 
 
 
+
+
 ### 打家劫舍Ⅲ
 
 这道题是很典型的树结构，用递归可以解决。
@@ -130,9 +133,9 @@ func rob(nums []int) int {
 在每次递归中返回两个值，偷取当户的最大值`v1`和没有偷取当户的最大值`v2`。
 
 - `node.v1 = left_v2 + right_v2 + node.Val`
-- `node.v2 =  max(left_v1, left_v2) + max(right_V1, right_v2)`
+- `node.v2 = max(left_v1, left_v2) + max(right_V1, right_v2)`
 
-结果是 = `max(root_v1, root_v2)`
+结果是  `max(root_v1, root_v2)`
 
 实现代码如下：
 
@@ -151,7 +154,7 @@ func recv(node *TreeNode) (V1 int, V2 int) {
     return left_V2 + right_V2 + node.Val,
         max(left_V1, left_V2) +  max(right_V1, right_V2)
 }
-````
+```
 
 
 
