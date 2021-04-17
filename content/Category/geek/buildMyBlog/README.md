@@ -3,9 +3,9 @@ title: 搭建个人博客
 # qq输入法输入sj即可生成对应日期
 date: 2021-04-13 23:06:01
 tags:
- - 博客搭建
+ - 个人博客
 categories:
- -  折腾随记
+ - 折腾随记
 sidebar: true
 
 # 是否发布
@@ -14,7 +14,7 @@ sidebar: true
 # keys:
 # 	- 'e10adc3949ba59abbe56e057f20f883e'
 ---
-::: tip
+::: warning
 记录搭建本博客选择的方案及其原因。
 :::
 
@@ -64,51 +64,6 @@ sidebar: true
 
 这里我参考的文档是： [GitHub & Coding 双线部署 Jekyll 博客](https://blog.cotes.info/posts/dual-deployment-Jekyll-Blog-on-GithubPages-n-CodingPages/)
 
-## 第四步，自动部署（[Travis Ci](https://travis-ci.org/)）
-
-不用部署npm环境，在任何有git的电脑下可以完成博客的更新。
-
-通过自定义Travis的after_script，可以文本实现提交到github上服务器双部署。
-
-这里我参考的文档是： [vuepress同时自动部署到Github和Coding](https://803344.netlify.app/web/vuepress-tong-shi-zi-dong-bu-shu-daogithub-hecoding.html)
-
-这里附上我的Travis配置文件
-
-```
-language: node_js
-node_js:
-  - lts/*
-install:
-  - npm ci
-script:
-  - npm run build
-  - echo 'www.guanyuqian.com' > CNAME
-
-after_script:
-  - cd docs
-  - git init
-  - git config --global user.name "guanyuqian"    #gh-pages显示发布的名字
-  - git config --global user.email "the_sam@foxmail.com"
-  - git add .
-  - git commit -m "第 $TRAVIS_BUILD_NUMBER 次上传更新我的文档"
-  # Github 
-  - git push --force --quiet "https://${GITHUB_TOKEN}@github.com/guanyuqian/guanyuqian.github.io.git" master:gh-pages
-  # Coding 
-  - git push --force --quiet "https://${CODING_USER}:${CODING_TOKEN}@e.coding.net/guanyuqian/guanyuqian.coding.me/guanyuqian.coding.me.git" master:gh-pages
-  - git tag v0.0.$TRAVIS_BUILD_NUMBER -a -m "由TravisCI自动标记$TRAVIS_BUILD_NUMBER次"
-  # Github
-  - git push --quiet "https://${GITHUB_TOKEN}@github.com/guanyuqian/guanyuqian.github.io.git" master:gh-pages --tags
-  # Coding
-  - git push --quiet "https://${CODING_USER}:${CODING_TOKEN}@e.coding.net/guanyuqian/guanyuqian.coding.me/guanyuqian.coding.me.git" master:gh-pages --tags
-deploy:
-  provider: pages
-  skip_cleanup: true
-  local_dir: docs
-  github_token: $GITHUB_TOKEN # 在 GitHub 中生成，用于允许 Travis 向你的仓库推送代码。在 Travis 的项目设置页面进行配置，设置为 secure variable
-  keep_history: true
-  on:
-    branch: main
-```
 
 ## 关于git提交的约定
 

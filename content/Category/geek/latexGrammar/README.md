@@ -1,13 +1,14 @@
 ---
 title: Latex公式语法
-# qq输入法输入sj即可生成对应日期
+# 输入法输入sj即可生成对应日期
 date: 2021-04-17 12:23:58
 tags:
  - Latex
 categories:
  - 折腾随记
-sidebar: true
-
+author: Guanyuqian
+# 侧边栏开关
+# sidebar: true
 # 是否发布
 # publish: true
 # 文档加密，md5加密的32位密文
