@@ -3,7 +3,7 @@ module.exports = {
   "description": "go the extra mile.",
   "dest": "docs",
   "plugins": ['vuepress-plugin-medium-zoom'],
-    plugins: [
+    "plugins": [
     [
       '@vuepress/last-updated',
       {
@@ -17,6 +17,14 @@ module.exports = {
     ]
   ],
   "head": [
+    ['link', {
+            rel: 'stylesheet',
+            href: 'https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.7.1/katex.min.css'
+        }],
+        ['link', {
+            rel: "stylesheet",
+            href: "https://cdnjs.cloudflare.com/ajax/libs/github-markdown-css/2.10.0/github-markdown.min.css"
+        }],
     [
       "link",
       {
@@ -117,24 +125,6 @@ module.exports = {
     // "record": "xxxx",
     "startYear": 2021,
     "noFoundPageByTencent": false,
-        // Assumes GitHub. Can also be a full GitLab url.
-    repo: 'vuejs/vuepress',
-    // Customising the header label
-    // Defaults to "GitHub"/"GitLab"/"Bitbucket" depending on `themeConfig.repo`
-    repoLabel: 'Contribute!',
-
-    // Optional options for generating "Edit this page" link
-
-    // if your docs are in a different repo from your main project:
-    docsRepo: 'vuejs/vuepress',
-    // if your docs are not at the root of the repo:
-    docsDir: 'docs',
-    // if your docs are in a specific branch (defaults to 'master'):
-    docsBranch: 'master',
-    // defaults to false, set to true to enable
-    editLinks: true,
-    // custom text for edit link. Defaults to "Edit this page"
-    editLinkText: 'Help us improve this page!'
   },
   markdown: {
     "lineNumbers": true,
@@ -154,14 +144,4 @@ module.exports = {
             md.use(require('markdown-it-katex'))
     }
   },
-  head: [
-        ['link', {
-            rel: 'stylesheet',
-            href: 'https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.7.1/katex.min.css'
-        }],
-        ['link', {
-            rel: "stylesheet",
-            href: "https://cdnjs.cloudflare.com/ajax/libs/github-markdown-css/2.10.0/github-markdown.min.css"
-        }]
-    ]
 }
