@@ -16,8 +16,8 @@ sidebar: true
 
 ---
 
-::: tip
-这篇文章记录Latex的公式语法和符号表。
+:::warning
+记录Latex的公式语法和符号表。
 :::
 
 <!-- more -->

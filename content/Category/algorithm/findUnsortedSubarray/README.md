@@ -17,15 +17,23 @@ publish: true
 # 	- 'e10adc3949ba59abbe56e057f20f883e'
 ---
 
+:::warning
+
+请你找出符合题意的 最短 子数组，并输出它的长度。
+
+:::
+
+ <!-- more -->
+
 ## 题目描述
 
 
 
-给你一个整数数组 nums ，你需要找出一个 连续子数组 ，如果对这个子数组进行升序排序，那么整个数组都会变为升序排序。
+给你一个整数数组 `nums`，你需要找出一个 连续子数组 ，如果对这个子数组进行升序排序，那么整个数组都会变为升序排序。
 
 请你找出符合题意的 最短 子数组，并输出它的长度。
 
- <!-- more -->
+
 > 来源：力扣（LeetCode）
 > 链接：https://leetcode-cn.com/problems/shortest-unsorted-continuous-subarray/
 
