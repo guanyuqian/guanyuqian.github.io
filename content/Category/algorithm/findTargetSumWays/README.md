@@ -1,9 +1,9 @@
 ---
-title: 494. 目标和
+title: 目标和
 date: 2021-04-14 14:58:01
 tags:
  - 动态规划
- - Hot100
+ - 高频题
  - LeetCode
 categories:
  -  算法题解
@@ -42,10 +42,6 @@ publish: true
 +1+1+1+1-1 = 3
 
 一共有5种方法让最终目标和为3。
-
-来源：力扣（LeetCode）
-链接：https://leetcode-cn.com/problems/target-sum
-著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。
 ```
 
 ## 提示
@@ -79,3 +75,4 @@ func findTargetSumWays(nums []int, target int) int {
     return hash[target]
 }
 ```
+
