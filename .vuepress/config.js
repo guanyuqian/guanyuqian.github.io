@@ -2,7 +2,29 @@ module.exports = {
   "title": "G-Blog",
   "description": "go the extra mile.",
   "dest": "docs",
+  "plugins": ['vuepress-plugin-medium-zoom'],
+    "plugins": [
+    [
+      '@vuepress/last-updated',
+      {
+        transformer: (timestamp, lang) => {
+          // 不要忘了安装 moment
+          const moment = require('moment')
+          moment.locale(lang)
+          return moment(timestamp).fromNow()
+        }
+      }
+    ]
+  ],
   "head": [
+    ['link', {
+            rel: 'stylesheet',
+            href: 'https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.7.1/katex.min.css'
+        }],
+        ['link', {
+            rel: "stylesheet",
+            href: "https://cdnjs.cloudflare.com/ajax/libs/github-markdown-css/2.10.0/github-markdown.min.css"
+        }],
     [
       "link",
       {
@@ -37,22 +59,22 @@ module.exports = {
     "subSidebar": "auto",//在所有页面中启用自动生成子侧边栏，原 sidebar 仍然兼容
     "nav": [
       {
-        "text": "Home",
+        "text": "主页",
         "link": "/",
         "icon": "reco-home"
       },
       {
-        "text": "TimeLine",
+        "text": "时间轴",
         "link": "/timeline/",
         "icon": "reco-date"
       },
       {
-        "text": "About",
+        "text": "关于",
         "icon": "reco-account",
-        "link": "/content/About/" 
+        "link": "/content/about/" 
       },
       {
-        "text": "Contact",
+        "text": "我的",
         "icon": "reco-message",
         "items": [
           {
@@ -72,11 +94,11 @@ module.exports = {
     "blogConfig": {
       "category": {
         "location": 2,
-        "text": "Category"
+        "text": "分类"
       },
       "tag": {
         "location": 3,
-        "text": "Tag"
+        "text": "标签"
       }
     },
     "friendLink": [
@@ -103,7 +125,22 @@ module.exports = {
     "startYear": 2021,
     "noFoundPageByTencent": false,
   },
-  "markdown": {
-    "lineNumbers": true
-  }
+  markdown: {
+    "lineNumbers": true,
+    // markdown-it-anchor 的选项
+    // anchor: { permalink: false },
+    // // markdown-it-toc 的选项
+    // toc: { includeLevel: [1, 2] },
+    extendMarkdown: md => {
+      // 使用更多的 markdown-it 插件!
+            md.set({
+                html: true
+            })
+            md.use(require('markdown-it-katex'))
+    },
+    config: md => {
+      // 使用更多的 markdown-it 插件!
+            md.use(require('markdown-it-katex'))
+    }
+  },
 }

@@ -1,5 +1,5 @@
 ---
-title: 581. 最短无序连续子数组
+title: 最短无序连续子数组
 date: 2021-04-14 15:26:39
 tags:
  - 单调栈
@@ -17,19 +17,28 @@ publish: true
 # 	- 'e10adc3949ba59abbe56e057f20f883e'
 ---
 
-## 题目描述
-> 来源：力扣（LeetCode）
-> 链接：https://leetcode-cn.com/problems/shortest-unsorted-continuous-subarray/
-
-给你一个整数数组 nums ，你需要找出一个 连续子数组 ，如果对这个子数组进行升序排序，那么整个数组都会变为升序排序。
+:::warning
 
 请你找出符合题意的 最短 子数组，并输出它的长度。
 
+:::
+
  <!-- more -->
 
+## 题目描述
 
-## 示例：
-```bash
+
+
+给你一个整数数组 `nums`，你需要找出一个 连续子数组 ，如果对这个子数组进行升序排序，那么整个数组都会变为升序排序。
+
+请你找出符合题意的 最短 子数组，并输出它的长度。
+
+
+> 来源：力扣（LeetCode）
+> 链接：https://leetcode-cn.com/problems/shortest-unsorted-continuous-subarray/
+
+## 示例
+```
 输入：nums = [2,6,4,8,10,9,15]
 输出：5
 解释：你只需要对 [6, 4, 8, 10, 9] 进行升序排序，那么整个表都会变为升序排序。
@@ -41,14 +50,14 @@ publish: true
 输出：0
 ```
 
-## 提示：
+## 提示
 
 - `1 <= nums.length <= 104`
 - `-105 <= nums[i] <= 105`
 
 
 
-## 思路1（单调栈）
+## 解法1（单调栈）
 
 | 时间复杂度 | 空间复杂度 |
 | ---------- | ---------- |
@@ -60,7 +69,7 @@ publish: true
 
 记录前序子数组中的最大值`preMax`，满足`nums[i] > preMax`才入栈，否则说明当前元素仍处于乱序子数组之中。
 
-该方法思路类似这题： [无序数组中找到左侧比他小右侧比他大的数](www.guanyuqian.com/content/blogs/algorithm/ThePivotElements)
+该方法解法类似这题： [无序数组中找到左侧比他小右侧比他大的数](www.guanyuqian.com/content/blogs/algorithm/ThePivotElements)
 
 
 
@@ -87,7 +96,7 @@ func findUnsortedSubarray(nums []int) int {
 
 
 
-## 思路2（贪心）
+## 解法2（贪心）
 
 | 时间复杂度 | 空间复杂度 |
 | ---------- | ---------- |
