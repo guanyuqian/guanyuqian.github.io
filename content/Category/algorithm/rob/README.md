@@ -152,7 +152,7 @@ func rob(nums []int) int {
 
 实现代码如下：
 
-````go
+```go
 func rob3(root *TreeNode) int {
     root_v1, root_v2 :=  recv(root)
     return max(root_v1, root_v2)
@@ -168,6 +168,3 @@ func recv(node *TreeNode) (V1 int, V2 int) {
         max(left_V1, left_V2) +  max(right_V1, right_V2)
 }
 ```
-
-
-

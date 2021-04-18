@@ -135,12 +135,13 @@ feat(Controller):用户查询接口开发
 │   ├── public (静态资源目录)
 │   ├── styles (主题配置)
 │   └── config.js (配置文件的入口文件)
-├── git_push.sh (一键push脚本)
 ├── content (博客内容文件目录)
 ├── .travis.yml (travis ci 自动部署脚本)
+├── create_md.sh (一键创建笔记模板)
+├── git_push.sh (一键push至github)
+├── LICENSE (版权声明)
 ├── package.json (npm包配置文件)
 ├── package-lock.json (npm包配置文件)
-├── LICENSE (版权声明)
 └── README.md (博客主页文件)
 ```
 

@@ -39,7 +39,7 @@ sidebar: true
 使用Go语言重新实现了一下这些设计模式，第一次使用Go编程，会有一些小问题。
 
 使用go test进行测试，在项目目录下运行
-```shell script
+```bash
 go test ./...
 ```
 
