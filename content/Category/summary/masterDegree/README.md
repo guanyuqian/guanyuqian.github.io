@@ -6,15 +6,15 @@ tags:
  - 研究生
 categories:
  -  个人总结
-sidebar: true
+# sidebar: true
 # 是否发布
-publish: true
+# publish: true
 # 文档加密，md5加密的32位密文
 keys:
  - 'e10adc3949ba59abbe56e057f20f883e'
 ---
 
-:::warning
+::: warning
 
 致所有的师弟师妹：
 

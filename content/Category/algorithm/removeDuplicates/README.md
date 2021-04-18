@@ -1,11 +1,11 @@
 ---
-title: 标题
+title: 删除有序数组中的重复项ⅠⅡ
 # shell 自动生成
 date : 2021-04-18 09:06:15
 tags:
+- 双指针
 - LeetCode
 categories:
-- 双指针
 - 算法题解
 # author: Guanyuqian
 # sidebar: true
@@ -16,7 +16,7 @@ categories:
 # 	- 'e10adc3949ba59abbe56e057f20f883e'
 ---
 
-:::warning
+::: warning
 
 给你一个有序数组 `nums` ，请你 *原地* 删除重复出现的元素。
 不要使用额外的数组空间，你必须在 原地 修改输入数组 并在使用 O(1) 额外空间的条件下完成。
@@ -26,16 +26,24 @@ categories:
 
 ## 题目描述
 
-### 删除有序数组中的重复项
+### 删除有序数组中的重复项Ⅰ
 
 每个元素 *只出现一次* ，返回删除后数组的新长度。
-
 
 
 > 来源：力扣（LeetCode）
 > 链接：https://leetcode-cn.com/problems/remove-duplicates-from-sorted-array
 
-#### 示例
+### 删除有序数组中的重复项 Ⅱ
+每个元素 *最多出现两次* ，返回删除后数组的新长度。
+
+> 来源：力扣（LeetCode）
+> 链接：https://leetcode-cn.com/problems/remove-duplicates-from-sorted-array-ii/
+
+
+## 示例
+
+### 删除有序数组中的重复项Ⅰ
 
 ```
 输入：nums = [1,1,2]
@@ -46,11 +54,8 @@ categories:
 输出：5, nums = [0,1,2,3,4]
 解释：函数应该返回新的长度 5 ， 并且原数组 nums 的前五个元素被修改为 0, 1, 2, 3, 4 。不需要考虑数组中超出新长度后面的元素。
 ```
-
 ### 删除有序数组中的重复项 Ⅱ
-每个元素 *最多出现两次* ，返回删除后数组的新长度。
 
-#### 示例
 ```
 输入：nums = [1,1,1,2,2,3]
 输出：5, nums = [1,1,2,2,3]
@@ -60,6 +65,7 @@ categories:
 输出：7, nums = [0,0,1,1,2,3,3]
 解释：函数应返回新长度 length = 7, 并且原数组的前五个元素被修改为 0, 0, 1, 1, 2, 3, 3 。 不需要考虑数组中超出新长度后面的元素。
 ```
+
 
 ## 解法
 

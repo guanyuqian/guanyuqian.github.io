@@ -6,7 +6,7 @@ tags:
  - 数据结构
  - LeetCode
 categories:
- -  算法题解
+ - 算法题解
 
 # author: Guanyuqian
 sidebar: true
