@@ -27,8 +27,11 @@ if [ ! -d "$file" ]; then
   subl $file
 else
   echo  -e  "ERR: File $file_path/README.md Exist!!!"
-  echo -n "Press any key to exit..."
-	read key
+
 fi
+echo -n "Press any key to exit..."
+read key
+
+
 
 
