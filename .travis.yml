@@ -2,9 +2,9 @@ language: node_js
 node_js:
   - lts/*
 install:
-  - npm ci
+ - yarn install
 script:
-  - npm run build
+  - yarn build
   # github自动链接外部域名
   - echo 'www.guanyuqian.com' > docs/CNAME
 
