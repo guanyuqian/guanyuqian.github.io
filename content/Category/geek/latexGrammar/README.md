@@ -113,9 +113,9 @@ $\left(\frac{a}{x} \right)^2$ 语法：\left(\frac{a}{x} \right)^2
 
 ### 箭头
 
-| 符号    | 语法  | 符号  | 语法 | 符号         | 语法       | 符号          | 语法       | 符号              | 语法            |
-| ------- | ----- | ----- | ---- | ------------ | ---------- | ------------- | ---------- | ----------------- | --------------- |
-| $\gets$ | \gets | $\to$ | \to  | $\Leftarrow$ | \Leftarrow | $\Rightarrow$ | \Reftarrow | $\Leftrightarrow$ | \Leftrightarrow |
+| 符号    | 语法  | 符号  | 语法 | 符号         | 语法       | 符号          | 语法        | 符号              | 语法            |
+| ------- | ----- | ----- | ---- | ------------ | ---------- | ------------- | ----------- | ----------------- | --------------- |
+| $\gets$ | \gets | $\to$ | \to  | $\Leftarrow$ | \Leftarrow | $\Rightarrow$ | \Rightarrow | $\Leftrightarrow$ | \Leftrightarrow |
 
 ### 省略号
 
