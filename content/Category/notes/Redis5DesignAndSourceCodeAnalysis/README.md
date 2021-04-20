@@ -1,5 +1,5 @@
 ---
-title: Redis 5 设计与源码分析
+title: 《Redis 5 设计与源码分析》 学习笔记
 date: 2021-04-15 14:02:25
 tags:
  - Redis

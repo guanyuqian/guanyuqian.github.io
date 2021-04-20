@@ -23,7 +23,7 @@ content_time=$(date "+%Y-%m-%d %H:%M:%S")
 if [ ! -d "$file" ]; then
   mkdir -p $file_path
   cp -u -v -r .vuepress/public/markdown.template $file
-  sed -i "4c date : $content_time" $file
+  sed -i "4c date: $content_time" $file
   subl $file
 else
   echo  -e  "ERR: File $file_path/README.md Exist!!!"
