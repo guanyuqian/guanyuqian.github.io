@@ -109,14 +109,24 @@ module.exports = {
         "icon": "reco-home"
       },
       {
-        "text": "时间轴",
+        "text": "历史",
         "link": "/timeline/",
         "icon": "reco-date"
+      },
+      {
+        "text": "留言",
+        "link": "/content/messageBoard/",
+        "icon": "reco-suggestion"
       },
       {
         "text": "关于",
         "icon": "reco-account",
         "link": "/content/about/" 
+      },
+      {
+        "text": "订阅",
+        "link": "https://www.guanyuqian.com/rss.xml",
+        "icon": "reco-rss"
       },
       {
         "text": "我的",
@@ -157,14 +167,14 @@ module.exports = {
       {
         "title": "vuepress-theme-reco",
         "desc": "A simple and beautiful vuepress Blog & Doc theme.",
-        "avatar": "https://vuepress-theme-reco.recoluan.com/icon_vuepress_reco.png",
+        "logo": "//vuepress-theme-reco.recoluan.com/icon_vuepress_reco.png",
         "link": "https://vuepress-theme-reco.recoluan.com"
       }
     ],
     "logo": "/logo.png",
     "search": true,
     "searchMaxSuggestions": 10,
-    "lastUpdated": "Last Updated",
+    "lastUpdated": "上次更新于",
     "author": "Guanyuqian",
     "authorAvatar": "/avatar.png",
     // "record": "xxxx",
