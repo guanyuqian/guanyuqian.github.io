@@ -1,6 +1,6 @@
 ---
-title: 文章标题
-# shell 根据创建时间自动生成
+title: 解码方法
+# shell 自动生成
 date: 2021-04-21 08:47:42
 tags:
 - 动态规划
@@ -8,19 +8,11 @@ tags:
 - LeetCode
 categories:
 - 算法题解
-# author: Guanyuqian
-# sidebar: true
-# 是否发布
-# publish: true
-# 文档加密，md5加密的32位密文
-# keys:
-# 	- 'e10adc3949ba59abbe56e057f20f883e'
-​---
 ---
 
 ::: warning
 
-这里填写文章摘要
+给你一个只含数字的 **非空** 字符串 `s` ，请计算并返回 **解码** 方法的 **总数** 。
 
 :::
 
@@ -79,10 +71,9 @@ categories:
 $$
 dp[i] = 
 \begin{cases}
-1 & \text{i == 0 && s[i] != '0'}\\
-dp[i - 1] & \text{i > 0 && s[i] != '0'}\\
-dp[i - 2] & \text{i > 1 && (s[i - 1] == '1' || (s[i - 1] == '2' && s[i] <= '6'))}\\
-dp[i - 1] + dp[i - 2] & \text{otherwise}
+dp[i-1] + dp[i-2] & 1 \le \text{int(s[i:i+1])}  \le 9 \land 10 \le \text{int(s[i-1:i+1])}  \le 26 \\
+dp[i-1] &  1 \le \text{int(s[i:i+1])}  \le 9 \\
+dp[i-2] &  10 \le \text{int(s[i-1:i+1])}  \le 26
 \end{cases}
 $$
 

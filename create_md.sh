@@ -5,12 +5,12 @@
 
 
 
-echo -e "Open file with sublime text by default."  
+echo -e "Open file with sublime text by default."	
 
 if [ -n "$1" ]; then
 	file_name="$1"
 else
-	echo -e "Exist category_id: "  
+	echo -e "Exist category_id: "	
 	ls content/category
 	echo -n "File path(category_id/file_name): " # 输入分类文件夹和文件名称
 	read file_name
@@ -21,16 +21,28 @@ file="$file_path/README.md"
 content_time=$(date "+%Y-%m-%d %H:%M:%S")
 
 if [ ! -d "$file" ]; then
-  mkdir -p $file_path
-  cp -u -v -r .vuepress/public/markdown.template $file
-  sed -i "4c date: $content_time" $file
-  subl $file
+	mkdir -p $file_path
+	cp -u -v -r .vuepress/public/markdown.template $file
+	sed -i "4c date: $content_time" $file
+	
+	if [ -x "$(command -v Typora)" ]; then
+		Typora $file
+		exit 1
+	elif [ -x "$(command -v subl)" ]; then
+		subl $file
+		exit 1
+	else 
+		echo -e	"The note has been generated to -> $file"
+		echo -e	"Please install sublime or typora to automatically open the note"
+		echo -n "Press any key to exit..."
+		read key
+	fi
 else
-  echo  -e  "ERR: File $file_path/README.md Exist!!!"
-
+	echo -e	"ERR: File $file_path/README.md Exist!!!"
+	echo -n "Press any key to exit..."
+	read key
 fi
-echo -n "Press any key to exit..."
-read key
+
 
 
 
