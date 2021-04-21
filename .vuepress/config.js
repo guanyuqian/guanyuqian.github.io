@@ -11,9 +11,15 @@ module.exports = {
     //         zIndex: 999999999, // z-index property of the canvas, default: 999999999
     //      },
     // ],
+    ["@vuepress-reco/vuepress-plugin-rss", {
+      site_url : 'https://www.guanyuqian.com',
+    }],
     ["vuepress-plugin-boxx"],
     ['sitemap', {
-     hostname: 'https://www.guanyuqian.com'
+     hostname: 'https://www.guanyuqian.com',
+        dateFormatter: val => {
+          return new Date().toISOString()
+        }
     }],
     // 代码复制弹窗插件
     ["vuepress-plugin-nuggets-style-copy", {
@@ -40,7 +46,7 @@ module.exports = {
           // 不要忘了安装 moment
           const moment = require('moment')
           moment.locale(lang)
-          return moment(timestamp).toString()
+          return moment(timestamp).fromNow()
         }
       }],
       ['@vuepress/pwa', {
@@ -92,6 +98,9 @@ module.exports = {
       "appKey": "N8pebj2MJ6flzFWggvnJFMo5", // your appKey
       "placeholder" : "说点什么吧...",
     },
+    feed: {
+      canonical_base: 'http://www.guanyuqian.com/',
+    },
     "subSidebar": "auto",//在所有页面中启用自动生成子侧边栏，原 sidebar 仍然兼容
     "nav": [
       {
@@ -136,6 +145,7 @@ module.exports = {
         "location": 3,
         "text": "标签"
       }
+
     },
     "friendLink": [
       {
