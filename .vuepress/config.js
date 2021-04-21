@@ -12,10 +12,9 @@ module.exports = {
     //      },
     // ],
     ["vuepress-plugin-boxx"],
-    //['sitemap', {
-    //  outFile: 'sitemap.txt',
-    //  hostname: 'https://www.guanyuqian.com'
-    //}],
+    ['sitemap', {
+     hostname: 'https://www.guanyuqian.com'
+    }],
     // 代码复制弹窗插件
     ["vuepress-plugin-nuggets-style-copy", {
       copyText: "复制代码",
