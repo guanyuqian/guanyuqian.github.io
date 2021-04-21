@@ -28,7 +28,18 @@ categories:
 
 ## 题目描述
 
+<!-- 流程图 -->
 
+@flowstart
+cond=>condition: Process?
+process=>operation: Process
+e=>end: End
+
+cond(yes)->process->e
+cond(no)->e
+@flowend
+
+<Boxx type="warning" :blockStyle="titleStyle" :titleStyle="titleStyle" changeTime="1000" title="我是一个大大的且变化的 title"/>
 
 ## 示例
 

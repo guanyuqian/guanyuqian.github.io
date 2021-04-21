@@ -474,3 +474,140 @@ InnoDB中处理死锁有两种方法：
 **SQL Server中**，行锁根据每次记录而产生，锁对于数据库来说是一种稀有资源，通过锁升级能够减少数据库中锁的数量，提升处理性能。
 
 InnoDB不存在锁升级的问题，因为它不是根据每个记录来产生行锁的，而是根据每个事务访问的每个页来对锁进行管理，采用位图的方式。因此不管一个事务中锁住页中的一个记录还是多个记录，其开销通常都是一致的。
+
+
+
+
+
+## 第7章 事务(Transition)
+
+### 认识事务
+
+- InnoDB 隔离级别默认为READ REPEATABLE， 满足ACID四个特性。
+- Oracle 隔离级别默认为READ COMMITED， 不满足隔离性。
+
+#### 
+
+#### 事务的四个特性
+
+- **A（Atomicity）原子性 ** 事务的执行结果只有成功和失败，不存在中间状态。中间状态指事务的部分执行成功，部分指令失败。
+- **C（Consistency）一致性** 成功提交的事务不会改变系统的一致性。系统的一致性指系统对数据的约束不会被破坏。
+- **I（Isolation）隔离性** 事务并发运行期间，对彼此的造成的数据库更改不可视。*READ COMMITED 不满足隔离性、READ REPEATABLE 满足隔离性。*
+- **D（Durability）持续性** 事务一旦提交，对数据库的更改是永久的。即使因为宕机等故障，数据库也能恢复提交的事务操作。
+
+#### 事务的分类
+
+事务分为以下四种，**InnoDB不支持第三种事务**：
+
+- 扁平事务（Flat Transition） 简单
+
+- 带有保存点的扁平事务（Flat Transition with Savepoint） 多点回溯
+
+- 链事务（Chained Transition） 持久化 + 单点回溯
+
+- 嵌套事务（Nested Transition） 并行执行 + 多点回溯
+
+- 分布式事务（Distributed Transition） 多数据库执行
+
+  
+
+##### 扁平事务（Flat Transition）
+
+是最简单的事务，也是最常用的事务。扁平事务仅保存事务执行前的状态，如果执行失败就需要重头开始执行事务命令。
+
+![img](./flag_tansition.png)
+
+##### 带有保存点的扁平事务（Flat Transition with Savepoint）
+
+可以在事务执行期间设置保存点，如果事务执行失败可以选择恢复到保存点位置，而不需要从头执行命令。不过此类事务的保存点都不支持持久化。
+
+![img](./flag_tansition_with_savepoint.png)
+
+##### 链事务（Chained Transition）
+
+只支持一个持久化保存点的扁平事务，持久化最近的一次子事务。
+
+![img](./chained_transition.png)
+
+
+
+##### 嵌套事务（Nested Transition）
+
+通过树形结构管理各个子事务，其叶子节点是扁平事务，其优点是支持不同子事务的并行执行。
+
+可以用带有保存点的扁平事务来模拟，但是不支持子事务并行。
+
+![imt](./nexted_transition.png)
+
+
+
+### 事务的实现方式
+
+#### redo log 重做日志
+
+redo log 是物理格式日志，记录每个页的修改情况，在数据库启动时可以用来恢复未写入磁盘的数据。
+
+重做日志用来保证事务的持久性，由两部分组成：
+
+- 重做日志缓存（redo log buffer）
+- 重做日志文件（redo log file）
+
+
+
+在提交事务之前，都会先写重做日志，确保在数据写入磁盘过程中宕机造成的数据丢失。
+
+![img](./mysql_redo.png)
+
+
+
+可以通过配置来控制重做日志缓存写入重做日志文件的策略，默认是在每次提交后执行一次缓存写入磁盘操作。此外，如果日志缓存快满了，或者主线程的定时写入任务到期，都会执行redo log的写入。
+
+
+
+**日志序列号(Log Sequence Number，LSN)** ，每个redo log都有一个LSN，随着时间递增，InnoDB在执行恢复操作的时候，会只执行比checkpoint LSN大的redo log。
+
+![img](./redo_log_lsn.png)
+
+##### Mysql 的 二进制日志（binlog）
+
+redo log是InnoDB层面实现持久性的方法，Mysql层面使用binlog来实现类似操作。与redo log 的区别如下：
+
+- **实现层面** redo log是InnoDB层面实现持久性的方法。Mysql层面使用binlog来实现类似操作。
+
+- **记录内容** redo log 是物理格式日志，记录每个页的修改情况。binlog是逻辑日志，记录对应的sql语句。所以redo log的执行会快一些。
+
+- **写入磁盘的时间点** redo log除了在事务提交时，在事务进行中不断被写入。（如果日志缓存快满了，或者主线程的定时写入任务到期，都会执行redo log的写入。）。binlog只会在日志提交时进行写入。
+
+  
+
+  
+
+同一次提交中两者的写入顺序如下所示：
+
+![img](./redo_bin_log.png)
+
+
+
+#### undo log 撤销日志
+
+**作用**：undo log有两个作用：rollback + MVCC。
+
+**逻辑日志（原理）**`undo log`和`redo log`记录物理日志不一样，它是逻辑日志。可以认为当`delete`一条记录时，`undo log`中会记录一条对应的`insert`记录，反之亦然，当`update`一条记录时，它记录一条对应相反的`update`记录。
+
+
+
+**使用场景**
+
+- **rollback：**undo log是把所有没有COMMIT的事务回滚到事务开始前的状态，系统崩溃时，可能有些事务还没有COMMIT，在系统恢复时，这些没有COMMIT的事务就需要借助undo log来进行回滚。
+
+- **MVCC：**在应用进行版本控制的时候，也是通过`undo log`来实现的：当读取的某一行被其他事务锁定时，它可以从`undo log`中分析出该行记录以前的数据是什么，从而提供该行版本信息，让用户实现非锁定一致性读取。
+
+
+
+**存储方式：**InnoDB 存储引擎对`undo log`的管理采用段的方式。`rollback segment`称为回滚段，每个回滚段中有 1024 个`undo log segment`。
+
+
+
+三种日志的执行流程入图所示：
+
+![img](./redo_bin_undo_log.png)

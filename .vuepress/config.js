@@ -2,10 +2,40 @@ module.exports = {
   "title": "G-Blog",
   "description": "go the extra mile.",
   "dest": "docs",
-  "plugins": ['vuepress-plugin-medium-zoom'],
     "plugins": [
-    [
-      '@vuepress/last-updated',
+    ['flowchart'],
+    // ['cursor-effects',
+    //      {
+    //         size: 2, // size of the particle, default: 2
+    //         shape: 'star' , // shape of the particle, default: 'star'
+    //         zIndex: 999999999, // z-index property of the canvas, default: 999999999
+    //      },
+    // ],
+    ["vuepress-plugin-boxx"],
+    ['sitemap', {
+      outFile: 'sitemap.txt',
+      hostname: 'https://www.guanyuqian.com'
+    }],
+    // 代码复制弹窗插件
+    ["vuepress-plugin-nuggets-style-copy", {
+      copyText: "复制代码",
+      tip: {
+          content: "复制成功!"
+      }
+    }],
+    // 动态标签页标题
+    // [
+    //   "dynamic-title",
+    //   {
+    //     showIcon: "/favicon.ico",
+    //     showText: "(/≧▽≦/)咦！又好了！",
+    //     hideIcon: "/failure.ico",
+    //     hideText: "(●—●)喔哟，崩溃啦！",
+    //     recoverTime: 200
+    //   }
+    // ],
+    ['vuepress-plugin-medium-zoom'],
+      ['@vuepress/last-updated',
       {
         transformer: (timestamp, lang) => {
           // 不要忘了安装 moment
@@ -13,8 +43,15 @@ module.exports = {
           moment.locale(lang)
           return moment(timestamp).fromNow()
         }
-      }
-    ]
+      }],
+      ['@vuepress/pwa', {
+        serviceWorker: true,
+        updatePopup: {
+            message: "发现新内容可用",
+            buttonText: "刷新"
+        }
+      }],
+    
   ],
   "head": [
     ['link', {
@@ -129,7 +166,7 @@ module.exports = {
     "lineNumbers": true,
     // markdown-it-anchor 的选项
     // anchor: { permalink: false },
-    // // markdown-it-toc 的选项
+    // markdown-it-toc 的选项
     // toc: { includeLevel: [1, 2] },
     extendMarkdown: md => {
       // 使用更多的 markdown-it 插件!
