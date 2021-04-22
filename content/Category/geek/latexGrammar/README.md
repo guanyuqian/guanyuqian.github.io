@@ -1,7 +1,7 @@
 ---
 title: Latex公式语法
 # 输入法输入sj即可生成对应日期
-date: 2021-04-17 12:23:58
+date: 2021-04-17 12:23:58+0800
 tags:
  - Latex
 categories:
