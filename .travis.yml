@@ -1,6 +1,10 @@
 language: node_js
 node_js:
   - lts/*
+
+before_install:
+  - export TZ='Asia/Shanghai' # 设置时区
+  
 install:
  - yarn install
 script:

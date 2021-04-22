@@ -145,6 +145,7 @@ module.exports = {
         ]
       }
     ],
+    "type": {"timezone": "Asia/Shanghai" },
     "type": "blog",
     "blogConfig": {
       "category": {
