@@ -59,11 +59,8 @@ module.exports = {
     
   ],
     "head": [
-      // basic config
-      ["link",{"rel": "icon","href": "/favicon.ico"}],
-      ["meta",{"name": "viewport","content": "width=device-width,initial-scale=1,user-scalable=no"}],
-      // pwa
-      ['link', { rel: 'manifest', href: '/manifest.json' }],
+        // pwa
+      ['link', { rel: 'manifest', href: '/manifest.webmanifest' }],
       ['meta', { name: 'theme-color', content: '#ffffff' }],
       ['meta', { name: 'apple-mobile-web-app-capable', content: 'yes' }],
       ['meta', { name: 'apple-mobile-web-app-status-bar-style', content: 'black' }],
@@ -71,6 +68,11 @@ module.exports = {
       // ['link', { rel: 'mask-icon', href: '/icons/safari-pinned-tab.svg', color: '#3eaf7c' }],
       ['meta', { name: 'msapplication-TileImage', content: '/mstile-150x150.png' }],
       //['meta', { name: 'msapplication-TileColor', content: '#000000' }]
+
+      // basic config
+      ["link",{"rel": "icon","href": "/favicon.ico"}],
+      ["meta",{"name": "viewport","content": "width=device-width,initial-scale=1,user-scalable=no"}],
+
       // markdown-it-KaTeX
       ['link', { rel: 'stylesheet', href: 'https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.7.1/katex.min.css'}],
       ['link', { rel: "stylesheet", href: "https://cdnjs.cloudflare.com/ajax/libs/github-markdown-css/2.10.0/github-markdown.min.css"}],
