@@ -1,7 +1,12 @@
 {
-    "name": "",
-    "short_name": "",
-    "icons": [
+  "name": "Guanyuqian's Blog",
+  "short_name": "G-Blog",
+  "description": "Vue-powered Static Site Generator",
+  "start_url": "/",
+  "theme_color": "#ffffff",
+  "background_color": "#ffffff",
+  "display": "standalone",
+  "icons": [
         {
             "src": "/android-chrome-192x192.png",
             "sizes": "192x192",
@@ -12,8 +17,5 @@
             "sizes": "256x256",
             "type": "image/png"
         }
-    ],
-    "theme_color": "#ffffff",
-    "background_color": "#ffffff",
-    "display": "standalone"
+    ]
 }

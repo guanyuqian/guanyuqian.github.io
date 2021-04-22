@@ -58,31 +58,23 @@ module.exports = {
       }],
     
   ],
-  "head": [
-    ['link', {
-            rel: 'stylesheet',
-            href: 'https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.7.1/katex.min.css'
-        }],
-        ['link', {
-            rel: "stylesheet",
-            href: "https://cdnjs.cloudflare.com/ajax/libs/github-markdown-css/2.10.0/github-markdown.min.css"
-        }],
-    [
-      "link",
-      {
-        "rel": "icon",
-        "href": "/favicon.ico"
-      }
-    ],
-    [
-      "meta",
-      {
-        "name": "viewport",
-        "content": "width=device-width,initial-scale=1,user-scalable=no"
-      }
-    ]
+    "head": [
+      // basic config
+      ["link",{"rel": "icon","href": "/favicon.ico"}],
+      ["meta",{"name": "viewport","content": "width=device-width,initial-scale=1,user-scalable=no"}],
+      // pwa
+      ['link', { rel: 'manifest', href: '/manifest.json' }],
+      ['meta', { name: 'theme-color', content: '#ffffff' }],
+      ['meta', { name: 'apple-mobile-web-app-capable', content: 'yes' }],
+      ['meta', { name: 'apple-mobile-web-app-status-bar-style', content: 'black' }],
+      ['link', { rel: 'apple-touch-icon', href: '/apple-touch-icon.png' }],
+      // ['link', { rel: 'mask-icon', href: '/icons/safari-pinned-tab.svg', color: '#3eaf7c' }],
+      ['meta', { name: 'msapplication-TileImage', content: '/mstile-150x150.png' }],
+      //['meta', { name: 'msapplication-TileColor', content: '#000000' }]
+      // markdown-it-KaTeX
+      ['link', { rel: 'stylesheet', href: 'https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.7.1/katex.min.css'}],
+      ['link', { rel: "stylesheet", href: "https://cdnjs.cloudflare.com/ajax/libs/github-markdown-css/2.10.0/github-markdown.min.css"}],
   ],
-
   "theme": "reco",
   "themeConfig": {
     "mode": "auto", // 默认 auto，auto 跟随系统，dark 暗色模式，light 亮色模式
@@ -145,7 +137,6 @@ module.exports = {
         ]
       }
     ],
-    "type": {"timezone": "Asia/Shanghai" },
     "type": "blog",
     "blogConfig": {
       "category": {
