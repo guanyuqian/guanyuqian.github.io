@@ -16,13 +16,13 @@ else
 	read file_name
 fi
 
-file_path="content/category/$file_name/"
+file_path="content/category/$file_name"
 file="$file_path/README.md"
 content_time=$(date "+%Y-%m-%d %H:%M:%S")
 
 if [ ! -d "$file" ]; then
 	mkdir -p $file_path
-	cp -u -v -r .vuepress/public/markdown.template $file
+	cp .vuepress/public/markdown.template $file
 	sed -i "4c date: $content_time" $file
 	
 	if [ -x "$(command -v Typora)" ]; then
