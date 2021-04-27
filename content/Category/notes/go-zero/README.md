@@ -269,26 +269,14 @@ func (l *AddLogic) Add(in *add.AddReq) (*add.AddResp, error) {
 1. 修改配置文件`user-api.yaml`，增加各rpc服务的配置。通过**etcd**可自动去发现可用的服务。
 
 ```yaml
-Add:
+Name: user-api
+Host: 0.0.0.0
+Port: 8888
+UserOperator:
   Etcd:
     Hosts:
       - localhost:2379
-    Key: add.rpc
-Check:
-  Etcd:
-    Hosts:
-      - localhost:2379
-    Key: check.rpc
-Update:
-  Etcd:
-    Hosts:
-      - localhost:2379
-    Key: update.rpc
-Delete:
-  Etcd:
-    Hosts:
-      - localhost:2379
-    Key: delete.rpc
+    Key: user.rpc
 ```
 
 2. 修改`course/api/internal/config/config.go`如下，增加各服务依赖。
@@ -314,34 +302,22 @@ type Config struct {
 package svc
 
 import (
-	"go-zero-demo/course/api/internal/config"
-
-	"go-zero-demo/course/rpc/add/adder"			// 手动代码
-	"go-zero-demo/course/rpc/check/checker"		// 手动代码
-	"go-zero-demo/course/rpc/update/updater"	// 手动代码
-	"go-zero-demo/course/rpc/delete/deleter"	// 手动代码
-
+	"go-zero-demo/course_demo/service/user/cmd/api/internal/config"
+	"go-zero-demo/course_demo/service/user/cmd/rpc/useroperator"	// 手动代码
 	"github.com/tal-tech/go-zero/zrpc"			// 手动代码
 )
 
 type ServiceContext struct {
 	Config config.Config
-	Adder   adder.Adder 		// 手动代码
-    Checker checker.Checker 	// 手动代码
-    Updater updater.Updater 	// 手动代码
-    Deleter deleter.Deleter 	// 手动代码
+	UserOperator useroperator.UserOperator 	// 手动代码
 }
 
 func NewServiceContext(c config.Config) *ServiceContext {
 	return &ServiceContext{
 		Config: c,
-		Adder: 	 adder.NewAdder(zrpc.MustNewClient(c.Add)),			// 手动代码
-        Checker: checker.NewChecker(zrpc.MustNewClient(c.Check)),	// 手动代码
-        Updater: updater.NewUpdater(zrpc.MustNewClient(c.Update)),	// 手动代码
-		Deleter: deleter.NewDeleter(zrpc.MustNewClient(c.Delete)),	// 手动代码
+		UserOperator:	useroperator.NewUserOperator(zrpc.MustNewClient(c.UserOperator)),			// 手动代码
 	}
 }
-
 ```
 
 4. 修改`course/api/internal/logic/addlogic.go`里的`Add`方法，如下。其他rpc调用也进行相应修改。在此次进行rpc服务的调用，并且根据调用结果编写返回结果给用户。
@@ -401,18 +377,18 @@ curl -i "http://localhost:8888/users/1"
 Post
 
 ```bash
-curl -d "name=wang&level=2" "http://localhost:8888/users/"
+curl -d -i "name=wang&level=2" "http://localhost:8888/users/"
 ```
 
 Delete:
 
 ```bash
-curl -X "DELETE" "http://localhost:8888/users/1?name=wang&level=3"
+curl -X -i "DELETE" "http://localhost:8888/users/1"
 ```
 
 Put:
 
 ```bash
-curl -X "PUT" -d "name=wang&level=2" "http://localhost:8888/users/1"
+curl -X -i"PUT" -d "name=wang&level=2" "http://localhost:8888/users/1"
 ```
 
