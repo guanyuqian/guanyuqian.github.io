@@ -7,388 +7,123 @@ tags:
 - 微服务框架
 categories:
 - 学习笔记
+publish: false
 ---
-
-::: warning
-
-Go-Zero学习笔记
-
-:::
 
 <!-- more -->
 
-> [GO-Zero 多RPC微服务demo](https://github.com/tal-tech/zero-doc/blob/main/docs/zero/bookstore.md)
+## 业务分析
 
-## 一、编写API Gateway代码
+| Method                   | HTTP request                                     | Description                              |
+| ------------------------ | ------------------------------------------------ | ---------------------------------------- |
+| **CreateLearningRecord** | **Post** /learning_record                        | 创建学习记录                             |
+| **CreateUser**           | **Post** /user                                   | 创建用户                                 |
+| **DeleteLearningRecord** | **Delete** /learning_record/{learning_record_id} | 删除学习记录                             |
+| **DeleteUser**           | **Delete** /user/{user_id}                       | 删除用户                                 |
+| **GetLearningRecords**   | **Get** /learning_records                        | 传入用户和课程列表，获取有关的学习记录。 |
+| **GetUser**              | **Get** /user/{user_id}                          | 获取用户                                 |
+| **GetModifyRecords**     | **Get** /modify_records                          | 获取修改记录                             |
+| **UpdateLearningRecord** | **Put** /learning_record/{learning_record_id}    | 更新学习记录                             |
+| **UpdateUser**           | **Put** /user/{user_id}                          | 更新用户                                 |
 
-1. 在`course/api`目录下通过**goctl**生成`api/user.api`：
 
-```bash
-goctl api -o user.api
-```
 
-2. 完善`project.api`中的网关逻辑。
+![img](./framework.jpg)
 
-3. 使用**goctl**生成**API Gateway**代码
 
-```bash
-goctl api go -api user.api -dir .
-```
-
-生成的文件结构如下：
 
-```bash
-api
-├── user.api                  // api定义
-├── user.go                   // main入口定义
-├── etc
-│   └── user-api.yaml         // 配置文件
-└── internal
-    ├── config
-    │   └── config.go              // 定义配置
-    ├── handler
-    │   ├── addhandler.go          // 实现addHandler
-    │   ├── checkhandler.go        // 实现checkHandler
-    │   ├── updatehandler.go          // 实现addHandler
-    │   ├── deletehandler.go        // 实现checkHandler
-    │   └── routes.go              // 定义路由处理
-    ├── logic
-    │   ├── addlogic.go            // 实现AddLogic
-    │   └── checklogic.go          // 实现CheckLogic
-    ├── svc
-    │   └── servicecontext.go      // 定义ServiceContext
-    └── types
-        └── types.go               // 定义请求、返回结构体
-```
+## 遇到的问题
 
+### 系统可复⽤性 
 
+> *实际业务中功能模块、场景⽐较多，常规做法是，每个查询都按需写查询各个微服务，这就忽略了系统的可复⽤性，譬如之前查询功能，都会⽤到查询⽤⼾等级，这个功能就是可复⽤的。 那么可设计系统框架：将这些操作变成"原⼦操作"，这些原⼦操作定义输⼊参数、输出参数，内部实现具体逻辑，他们是可以组装的，以此提⾼复⽤度，原⼦操作都是⾯向接⼝编程*
 
-4. 在 `api` 目录下启动API Gateway服务，默认侦听在8888端口。
+对于这个问题，我的理解是有意识在编码的时候将出现两次以上的中长逻辑片段以函数形式进行封装，提升系统的可复用性。
 
-```bash
-go run user.go -f etc/user-api.yaml
-```
+不是很理解原子操作、面向接口编程这两个概念。在我的了解中，原子操作一般指代数据库中事务的原子特性，测试驱动开发（TDD）优点类似面向接口这一概念，不过陷入不是思考中的“面向接口编程”。可能还是需要进入到实际的开发工作中，才能有更深入的理解。
 
-5. 测试API Gateway服务
+在本层实现的课程Demo中，同一模块的重复逻辑通过函数封装提高可复用性，至于思考中的查询用户等级这一概念，我的实现是在API层直接调用GetUser这一RPC，因为这个服务可以提供查询等级的功能。为什么不选择在RPC层封装这一段逻辑，因为我将课程和用户分成了两个RPC，应该尽可能减少他们的复用代码，因为实际生产情况下这两个RPC服务有可能完全不会在同一环境中。
 
-```bash
-curl -i "http://localhost:8888/users/check?name=wang"
-```
+### 问题⾃动剖析系统 
 
-返回如下：
+> *借⽤上⾯框架，我们定义⼀些问题描述、输⼊参数，业务逻辑上借助各种可组装的"原⼦操作"，就可以达到伪智能问题剖析系统。*
 
-```bash
-HTTP/1.1 200 OK
-Content-Type: application/json
-Date: Thu, 03 Sep 2020 06:46:18 GMT
-Content-Length: 25
+这个问题是基于上个问题进行提出的，由于上个问题我没有能够理解原子操作的实现，所以也不是很理解“问题自动剖析系统”。
 
-{"found":false,"level":0}
-```
+### Go-Zero Model层代码自动生成
 
-可以看到我们API Gateway其实啥也没干，就返回了个空值。因为在默认的代码中，业务逻辑层并没有调用任何的rpc服务，而是直接返回空。接下来我们会在rpc服务里实现业务逻辑，然后建立起api和rpc之间的连接。
+> 在定义数据库时，课程记录应该与用户有一个外键相连，但是Go-Zero的goctl自动生成Model层代码出了问题：**它不支持含有符合键和外键的Model代码生成**。
 
-## 二、编写各个操作的 rpc服务
+在进行逻辑操作的时候，都需要查询判断外键关系，这应该是很大的消耗。不知道是因为我对这个工具理解有误，还是这个问题有别的解决方法。
 
-0. 启动**etcd**，用于管理各个`rpc`服务之间的上线下线：
+### 事务的实现
 
-```bash
-etcd
-```
+>  因为修改记录这样Model不需要提供CURD的接口，所以就在RPC的逻辑层中直接操作了修改记录表。
 
-这里以add为例，其他操作的流程也是一样的，只要确保第4步的端口不冲突即可。
+不过这带来一点问题，修改记录应该是和两个表的修改操作应该是属于同一事务，没有对这两个操作进行事务的封装可能会导致修改记录不正确的问题。事务的实现又有以下的问题：
 
-1. 在`course/rpc/add`目录下通过命令生成`proto`文件模板。
+- 在go-zero自动生成的代码中，没看到事务的接口，是否需要手动实现。
+- 如果这些Model处于不同的MySQL集群，该如何实现不同MySQL集群中的事务实现。
 
-```bash
-goctl rpc template -o add.proto
-```
+## 总结与思考
 
-2. 完善`add.proto`中的逻辑。
+### 通用接口协议
 
-3. 用`goctl`生成rpc代码，在`rpc/add`目录下执行命令
+> *是不是需要根据不同功能设计不同接⼝？如果有20个功能模块，每个模块提供CRUD，就要提 供80个接⼝，炸裂了。尝试设计⼀些通⽤协议吧*
 
-```bash
-goctl rpc proto -src add.proto -dir .
-```
+**表现层状态转换**（**Representational State Transfer**，**REST**），REST对资源的操作包括获取、创建、修改和删除，这些操作正好对应HTTP协议提供的GET、POST、PUT和DELETE方法。
 
-文件结构如下：
+|                          资源                          |                             GET                              |                          PUT                          |                             POST                             |        DELETE        |
+| :----------------------------------------------------: | :----------------------------------------------------------: | :---------------------------------------------------: | :----------------------------------------------------------: | :------------------: |
+|   一组资源的URI，比如`https://example.com/resources`   | **列出**URI，以及该资源组中每个资源的详细信息（后者可选）。  |       使用给定的一组资源**替换**当前整组资源。        | 在本组资源中**创建/追加**一个新的资源。该操作往往返回新资源的URL。 |  **删除**整组资源。  |
+| 单个资源的URI，比如`https://example.com/resources/142` | **获取**指定的资源的详细信息，格式可以自选一个合适的网络媒体类型（比如：XML、JSON等） | **替换/创建**指定的资源。并将其追加到相应的资源组中。 | 把指定的资源当做一个资源组，并在其下**创建/追加**一个新的元素，使其隶属于当前资源。 | **删除**指定的元素。 |
 
-```
-rpc/add
-├── add                   // pb.go
-│   └── add.pb.go
-├── add.go                // main函数入口
-├── add.proto             // proto源文件
-├── adder                 // rpc client call entry
-│   └── adder.go
-├── etc                   // yaml配置文件
-│   └── add.yaml
-└── internal              
-    ├── config            // yaml配置文件对应的结构体定义
-    │   └── config.go
-    ├── logic             // 业务逻辑
-    │   └── addlogic.go
-    ├── server            // rpc server
-    │   └── adderserver.go
-    └── svc               // 资源依赖
-        └── servicecontext.go
-```
-
-4. `etc/add.yaml`文件里可以修改侦听端口等配置，确保各`rpc`之间的端口不冲突。
-5. 直接可以运行，如下：
-
-```
-  go run add.go -f etc/add.yaml
-  Starting rpc server at 127.0.0.1:8080...
-```
-
-但此时逻辑还都是空的，接下来我们要定义数据库连接，以及各RPC对数据库的操作。
-
-## 三、定义数据库表结构，并生成CRUD+cache代码
-
-0. 启动mysql和redis，并且在mysql中创建好数据库和表格。user.sql 是`1. `中的文件。
-
-```bash
-redis-server # redis启动
-```
-
-```bash
-mysql -u root -p # mysql启动
-create database gozero; # 创建数据库
-source user.sql; # 创建表格
-```
-
-1. 再`course/rpc/model`下创建编写创建user表的sql文件`user.sql`
-
-```mysql
-CREATE TABLE `user`
-(
-  `name` varchar(255) NOT NULL COMMENT 'user name',
-  `level` int NOT NULL COMMENT 'user level',
-  PRIMARY KEY(`name`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-```
-
-2. 在`course/rpc/model`目录下执行如下命令生成CRUD+cache代码，`-c`表示使用`redis cache`
-
-```
-goctl model mysql ddl -c -src book.sql -dir .
-```
-
-生成后的文件结构如下：
-
-```bash
-rpc/model
-├── book.sql
-├── bookstoremodel.go     // CRUD+cache代码
-└── vars.go               // 定义常量和变量
-```
-
-
-
-## 四、修改add/check rpc代码调用crud+cache代码
-
-1. **配置rpc的MySQL数据库连接**，修改`course/rpc/add/etc/add.yaml`增加如下内容，其他rpc服务也需要进行修改。可以使用多个redis作为cache，支持redis单点或者redis集群
-
-```yaml
-DataSource: root:password@tcp(localhost:3306)/gozero
-Table: user
-Cache:
-  - Host: localhost:6379
-```
-
-2. **增加了mysql和redis cache配置** ，修改`course/rpc/add/internal/config/config.go`如下：，其他rpc服务也需要进行修改。
-
-```go
-import (
-	"github.com/tal-tech/go-zero/zrpc"
-	"github.com/tal-tech/go-zero/core/stores/cache" // 手动代码
-)
-type Config struct {
-    zrpc.RpcServerConf
-    DataSource string             // 手动代码
-    Cache      cache.CacheConf    // 手动代码
-}
-```
-
-3. **增加数据库的服务运行上下文**，修改`course/rpc/add/internal/svc/servicecontext.go`如下，其他rpc服务也需要进行修改。
-
-```go
-package svc
-
-import (
-	"go-zero-demo/course/rpc/add/internal/config"
-	"go-zero-demo/course/rpc/model"    // 手动代码
-	"github.com/tal-tech/go-zero/core/stores/sqlx"    // 手动代码
-)
-
-
-type ServiceContext struct {
-    c     config.Config
-    Model model.UserModel   // 手动代码
-}
-
-func NewServiceContext(c config.Config) *ServiceContext {
-    return &ServiceContext{
-        c:             c,
-        Model: model.NewUserModel(sqlx.NewMysql(c.DataSource), c.Cache), // 手动代码
-    }
-}
-```
-
-4. **完善rpc运行逻辑**，修改`course/rpc/add/internal/logic/addlogic.go`如下，其他rpc服务也需要进行修改。
-
-```go
-func (l *AddLogic) Add(in *add.AddReq) (*add.AddResp, error) {
-    _, err := l.svcCtx.Model.Insert(model.User{
-        Name:  in.Name,
-        Level: in.Level,
-    })
-    if err != nil {
-        return nil, err
-    }
-
-    return &add.AddResp{
-        Ok: true,
-    }, nil
-}
-```
-
-5. 所有rpc逻辑已经完成，可以全部运行，直接可以运行如下，其他rpc服务也需要如此运行。
-
-```
-  $ go run add.go -f etc/add.yaml
-  Starting rpc server at 127.0.0.1:8080...
-```
-
-
-
-## 五、 修改API Gateway代码调用 rpc服务
-
-1. 修改配置文件`user-api.yaml`，增加各rpc服务的配置。通过**etcd**可自动去发现可用的服务。
-
-```yaml
-Name: user-api
-Host: 0.0.0.0
-Port: 8888
-UserOperator:
-  Etcd:
-    Hosts:
-      - localhost:2379
-    Key: user.rpc
-```
-
-2. 修改`course/api/internal/config/config.go`如下，增加各服务依赖。
-
-```go
-package config
-import (
-	"github.com/tal-tech/go-zero/rest"
-	"github.com/tal-tech/go-zero/zrpc"	// 手动代码
-)
-type Config struct {
-	rest.RestConf
-	Add		zrpc.RpcClientConf     // 手动代码
-    Check	zrpc.RpcClientConf     // 手动代码
-    Update	zrpc.RpcClientConf     // 手动代码
-    delete 	zrpc.RpcClientConf     // 手动代码
-}
-```
-
-3. 修改`course/api/internal/svc/servicecontext.go`如下，通过ServiceContext在不同业务逻辑之间传递依赖。
-
-```go
-package svc
-
-import (
-	"go-zero-demo/course_demo/service/user/cmd/api/internal/config"
-	"go-zero-demo/course_demo/service/user/cmd/rpc/useroperator"	// 手动代码
-	"github.com/tal-tech/go-zero/zrpc"			// 手动代码
-)
-
-type ServiceContext struct {
-	Config config.Config
-	UserOperator useroperator.UserOperator 	// 手动代码
-}
-
-func NewServiceContext(c config.Config) *ServiceContext {
-	return &ServiceContext{
-		Config: c,
-		UserOperator:	useroperator.NewUserOperator(zrpc.MustNewClient(c.UserOperator)),			// 手动代码
-	}
-}
-```
-
-4. 修改`course/api/internal/logic/addlogic.go`里的`Add`方法，如下。其他rpc调用也进行相应修改。在此次进行rpc服务的调用，并且根据调用结果编写返回结果给用户。
-
-```go
-func (l *AddLogic) Add(req types.AddReq) (*types.AddResp, error) {
-    resp, err := l.svcCtx.Adder.Add(l.ctx, &adder.AddReq{
-        Book:  req.Book,
-        Price: req.Price,
-    })
-    if err != nil {
-        return nil, err
-    }
-    return &types.AddResp{
-        Ok: resp.Ok,
-    }, nil
-}
-```
-
-至此，api gateway和各rpc服务之间的连接以及配置好，可以开始运行了。
-
-5. 在 `api` 目录下启动API Gateway服务，默认侦听在8888端口。
-
-```bash
-go run user.go -f etc/user-api.yaml
-```
-
-6. 测试API Gateway服务
-
-```bash
-curl -i "http://localhost:8888/users/check?name=wang"
-```
-
-返回如下：
-
-```bash
-HTTP/1.1 200 OK
-Content-Type: application/json
-Date: Sun, 25 Apr 2021 06:11:23 GMT
-Content-Length: 24
-
-{"found":true,"level":1}
-```
-
-可以看到我们API Gateway其实啥也没干，就返回了个空值。因为在默认的代码中，业务逻辑层并没有调用任何的rpc服务，而是直接返回空。接下来我们会在rpc服务里实现业务逻辑，然后建立起api和rpc之间的连接。
-
-
-
-## CURL 测试命令
-
-Get
-
-```bash
-curl -i "http://localhost:8888/users/1"
-```
-
-Post
-
-```bash
-curl -d -i "name=wang&level=2" "http://localhost:8888/users/"
-```
-
-Delete:
-
-```bash
-curl -X -i "DELETE" "http://localhost:8888/users/1"
-```
-
-Put:
-
-```bash
-curl -X -i"PUT" -d "name=wang&level=2" "http://localhost:8888/users/1"
-```
+### 实现一次查询多个属性
+
+> 在goctl自动生成的Model层操作代码，没有对指定列的查询操作提供接口，只有针对唯一键进行查询的接口。
+
+经过查询更下一层的"go-zero.sqlc"库接口，发现了函数"QueryRowsNoCache"。在他的实现中，查询多行的操作时默认不查Cache的，可能是为了维护多值的数据一致性。
+
+然后使用这个函数实现了根据多个列查询操作的接口`FindMultiple(userId int64, courseId int64) (*[]LearningRecord, error)`，但是这个接口每次只指定一个courseId，这会造成对多个courseId的查询，这对查询课程记录表来说是消耗巨大的。
+
+最后研究了QueryRowsNoCache的代码实现，实现了一次可对多个courseId进行查询的接口`FindMultiple(userId int64, courseIds []int64) (*[]LearningRecord, error)`。
+
+### 辅助工具使用
+
+> 使用一些工具能够提升开发效率
+
+- IDE：goland
+  - 代码补全，格式化，自动导入包
+  - 有goctl的插件支持，可以在GUI使用goctl
+  - 可视化运行多处api与rpc服务
+- 接口调试：PostMan，api接口调试的辅助工具，替代命令行中curl的输入测试
+- 文档生成：swagger，go-zero支持swagger接口文档自动生成
+
+## Go-Zero 多RPC微服务开发流程
+
+> 参考于：[GO-Zero 多RPC微服务demo](https://github.com/tal-tech/zero-doc/blob/main/docs/zero/bookstore.md)
+
+Go-Zero构建多RPC微服务的流程主要分为以下几步：
+
+0. 配置环境：
+
+   1. 安装MySQL——实现数据持久化。
+
+   2. 安装Redis——实现缓存机制。
+
+   3. 安装ETCD——实现服务发现功能。
+   4. 安装go-zero——微服务器框架
+   5.  安装 goctl 工具——go-zero的代码自动生成工具
+
+1. API模板生成：编写go-zero的API Gateway模板文件，使用 goctl 自动生成API Gateway代码。
+2. RPC模板生成：编写基于protobuf 的 RPC模板文件，使用 goctl 自动生成RPC代码
+3. Model数据库定义与相关操作代码生成：
+   1. 定义数据库的sql文件，在MySQL中生成数据库及表格
+   2. 根据数据库或者定义的sql文件，使用goctl自动生成CRUD+cache代码
+4. RPC业务逻辑实现：
+   1. 增加RPC连接MySQL与Redis的环境配置
+   2. 完善RPC中的执行逻辑
+5. 修改API Gateway代码调用 rpc服务：
+   1. 增加RPC的连接配置
+   2. 完善API业务中的执行逻辑
 

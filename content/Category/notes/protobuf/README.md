@@ -52,7 +52,7 @@ message SearchRequest {
   EnumAllowingAlias enum1 = 4;
   EnumNotAllowingAlias enum2 = 4;
   // 其他消息类型
-  repeated Data data = 4;
+  Data data = 4;
 
 
   // 枚举类型
