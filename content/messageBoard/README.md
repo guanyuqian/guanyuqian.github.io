@@ -6,6 +6,9 @@ publish: false
 
 ::: warning
 欢迎大家在此留下你的建议和意见，或者在 GitHub issue (opens new window)提交你的问题。
+:::
+<!-- more -->
+
 
 想要交换友链的小伙伴，欢迎在留言板留言，留言格式：
 ```json
@@ -17,5 +20,3 @@ publish: false
     "logo"  :"（非必须）网站的logo的url"
 }
 ```
-:::
-<!-- more -->
