@@ -1,7 +1,7 @@
 ---
 title: 论文写作相关网站推荐
 # shell 根据创建时间自动生成
-date: 2021-04-23 11:54:46
+date: 2021-04-30 20:00:36
 tags:
 - 论文写作
 categories:
@@ -27,7 +27,7 @@ categories:
 
 ### 论文检索
 
-[IEEE Xplore](ttps://ieeexplore.ieee.org/Xplore/home.jsp)
+[IEEE Xplore](https://ieeexplore.ieee.org/)
 
 收录了IEEE所有的文献电子稿，可以指定方向、关键词、年份。
 
