@@ -1,5 +1,5 @@
 ---
-title: Go Zero学习笔记
+title: Go-Zero学习笔记
 # shell 根据创建时间自动生成
 date: 2021-04-30 20:10:04
 tags:
@@ -7,7 +7,6 @@ tags:
 - 微服务框架
 categories:
 - 学习笔记
-publish:true
 ---
 
 ::: warning
