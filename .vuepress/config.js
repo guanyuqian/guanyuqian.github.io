@@ -49,13 +49,13 @@ module.exports = {
           return moment(timestamp).fromNow()
         }
       }],
-      ['@vuepress/pwa', {
-        serviceWorker: true,
-        updatePopup: {
-            message: "发现新内容可用",
-            buttonText: "刷新"
-        }
-      }],
+      //['@vuepress/pwa', {
+     //   serviceWorker: true,
+     //   updatePopup: {
+    //        message: "发现新内容可用",
+    //        buttonText: "刷新"
+     //   }
+    //  }],
     
   ],
     "head": [
