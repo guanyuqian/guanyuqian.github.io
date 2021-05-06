@@ -65,8 +65,6 @@ categories:
 
 ## 解法
 
-### 解法1： DP
-
 - 时间复杂度：$\mathcal{O}(n)$
 - 空间复杂度：$\mathcal{O}(1)$
 

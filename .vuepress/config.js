@@ -4,6 +4,13 @@ module.exports = {
   "dest": "docs",
     "plugins": [
     ['flowchart'],
+    // ['cursor-effects',
+    //      {
+    //         size: 2, // size of the particle, default: 2
+    //         shape: 'star' , // shape of the particle, default: 'star'
+    //         zIndex: 999999999, // z-index property of the canvas, default: 999999999
+    //      },
+    // ],
     ["@vuepress-reco/vuepress-plugin-rss", {
       site_url : 'https://www.guanyuqian.com',
     }],
@@ -14,12 +21,24 @@ module.exports = {
           return new Date().toISOString()
         }
     }],
+    // 代码复制弹窗插件
     ["vuepress-plugin-nuggets-style-copy", {
       copyText: "复制代码",
       tip: {
           content: "复制成功!"
       }
     }],
+    // 动态标签页标题
+    // [
+    //   "dynamic-title",
+    //   {
+    //     showIcon: "/favicon.ico",
+    //     showText: "(/≧▽≦/)咦！又好了！",
+    //     hideIcon: "/failure.ico",
+    //     hideText: "(●—●)喔哟，崩溃啦！",
+    //     recoverTime: 200
+    //   }
+    // ],
     ['vuepress-plugin-medium-zoom'],
       ['@vuepress/last-updated',
       {
@@ -30,10 +49,31 @@ module.exports = {
           return moment(timestamp).fromNow()
         }
       }],
+      ['@vuepress/pwa', {
+        serviceWorker: true,
+        updatePopup: {
+            message: "发现新内容可用",
+            buttonText: "刷新"
+        }
+      }],
+    
   ],
     "head": [
+        // pwa
+      ['link', { rel: 'manifest', href: '/manifest.webmanifest' }],
+      ['meta', { name: 'theme-color', content: '#ffffff' }],
+      ['meta', { name: 'apple-mobile-web-app-capable', content: 'yes' }],
+      ['meta', { name: 'apple-mobile-web-app-status-bar-style', content: 'black' }],
+      ['link', { rel: 'apple-touch-icon', href: '/apple-touch-icon.png' }],
+      // ['link', { rel: 'mask-icon', href: '/icons/safari-pinned-tab.svg', color: '#3eaf7c' }],
+      ['meta', { name: 'msapplication-TileImage', content: '/mstile-150x150.png' }],
+      //['meta', { name: 'msapplication-TileColor', content: '#000000' }]
+
+      // basic config
       ["link",{"rel": "icon","href": "/favicon.ico"}],
       ["meta",{"name": "viewport","content": "width=device-width,initial-scale=1,user-scalable=no"}],
+
+      // markdown-it-KaTeX
       ['link', { rel: 'stylesheet', href: 'https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.7.1/katex.min.css'}],
       ['link', { rel: "stylesheet", href: "https://cdnjs.cloudflare.com/ajax/libs/github-markdown-css/2.10.0/github-markdown.min.css"}],
   ],
@@ -137,7 +177,12 @@ module.exports = {
   },
   markdown: {
     "lineNumbers": true,
+    // markdown-it-anchor 的选项
+    // anchor: { permalink: false },
+    // markdown-it-toc 的选项
+    // toc: { includeLevel: [1, 2] },
     extendMarkdown: md => {
+      // 使用更多的 markdown-it 插件!
             md.set({
                 html: true
             })
