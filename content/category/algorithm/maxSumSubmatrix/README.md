@@ -6,7 +6,7 @@ tags:
 - 动态规划
 - 容斥定理
 - 有序集合
-- 二分查找
+- 二分法
 - LeetCode
 categories:
 - 算法题解

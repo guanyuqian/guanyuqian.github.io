@@ -3,7 +3,7 @@ title: 在 D 天内送达包裹的能力
 # shell 根据创建时间自动生成
 date: 2021-04-26 11:25:42
 tags:
-- 二分查找
+- 二分法
 - LeetCode
 categories:
 - 算法题解
