@@ -137,14 +137,14 @@ module.exports = {
                 "link": "/content/about/"
             },
             {
-                "text": "订阅",
-                "link": "https://www.guanyuqian.com/rss.xml",
-                "icon": "reco-rss"
-            },
-            {
                 "text": "留言",
                 "link": "/content/messageBoard/",
                 "icon": "reco-suggestion"
+            },
+            {
+                "text": "订阅",
+                "link": "https://www.guanyuqian.com/rss.xml",
+                "icon": "reco-rss"
             },
             {
                 "text": "GitHub",
