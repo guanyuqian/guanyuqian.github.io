@@ -21,7 +21,7 @@ publish: false
 
  - 工作年限：1年
 
- - Mail：[yuqianguan@qq.com](mailto:the_sam@foxmail.com)
+ - E-Mail：[yuqianguan@qq.com](mailto:the_sam@foxmail.com)
 
  - Github：[@guanyuqian ](http://github.com/guanyuqian )
 

@@ -14,7 +14,7 @@ module.exports = {
         site_url: 'https://www.guanyuqian.com',
     }], ["vuepress-plugin-boxx"], ['sitemap', {
         hostname: 'https://www.guanyuqian.com',
-        dateFormatter: val = >{
+        dateFormatter: val =>{
             return new Date().toISOString()
         }
     }],
@@ -37,7 +37,7 @@ module.exports = {
     //   }
     // ],
     ['vuepress-plugin-medium-zoom'], ['@vuepress/last-updated', {
-        transformer: (timestamp, lang) = >{
+        transformer: (timestamp, lang) =>{
             // 不要忘了安装 moment
             const moment = require('moment') moment.locale(lang) return moment(timestamp).fromNow()
         }
@@ -195,7 +195,7 @@ module.exports = {
         // anchor: { permalink: false },
         // markdown-it-toc 的选项
         // toc: { includeLevel: [1, 2] },
-        extendMarkdown: md = >{
+        extendMarkdown: md =>{
             // 使用更多的 markdown-it 插件!
             md.set({
                 html: true,
