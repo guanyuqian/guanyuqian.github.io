@@ -201,7 +201,8 @@ module.exports = {
             // 使用更多的 markdown-it 插件!
             md.set({
                 html: true,
-            }) md.use(require('markdown-it-katex'))
+            }) 
+            md.use(require('markdown-it-katex'))
         }
     },
 }
