@@ -36,7 +36,7 @@ publish: false
 
 #### DDS中间件
 
-进行车载操作系统中间件数据分发服务(Data Distribution Service, DDS) 的研发工作，本人负责一个功能模块的实现。模块有对应的开源版本，要求改变设计模式、使用 ISO C++新特性进行编写、并设计代码行覆盖率 100%的 UT。其中遇到异常情况无法触发的问题，经过调研，使用了对代码打桩进行解决。工作期间与同事交流技术细节，同事对我的评价是基础功不错。
+进行车载操作系统中间件数据分发服务(Data Distribution Service, DDS) 的研发工作，本人负责一个功能模块的实现。模块有对应的开源版本，要求改变设计模式、使用 ISO C++新特性进行编写、并设计代码行覆盖率 100%的 UT。
 
 ### 东方海外
 
@@ -48,7 +48,7 @@ publish: false
 
 <!-- ## 开源项目 -->
 
-
+<!-- ## 学术成果 -->
 
 
 ## 学术成果
@@ -67,11 +67,14 @@ publish: false
   
   本文提出了一种适用于DSA的自适应分层分离拟合（Adaptive Layered Segregated Fit, ALSF）算法。ALSF算法结合了动态二维数组和位图，在恒定的执行时间内完成内存块的分配和释放，并利用内存分割技术减少内部碎片。该方案还通过分析系统对不同内存大小的分配来调整分离列表的数目，提高了内存块的匹配精度。我们在Zephyr OS中对ALSF和两级分离拟合（TLSF）方案进行了对比实验分析和研究。实验表明，该方案的平均内存利用率达到94.95%。与TLSF方案相比，该方案在内存不足的情况下，分配成功率提高了12.99%。
 
+<!-- ## 技能清单 -->
 
 ## 技能清单
-- 语言：golang、c++~~、python、shell~~
-- 数据库：mysql、redis~~、mongodb~~
-- 消息队列：~~RocketMQ，kafka、nsq~~
-- RPC：~~thrift、gRPC~~
-- 框架：~~gin、gorm、go-redis~~
 
+- 语言：golang、c++、python、shell
+- 数据库：mysql、redis、mongodb
+- 消息队列：RocketMQ，kafka、nsq
+- RPC：thrift、gRPC
+- 框架：gin、gorm、go-redis
+
+ 
