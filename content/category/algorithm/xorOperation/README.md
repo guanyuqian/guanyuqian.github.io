@@ -3,7 +3,7 @@ title: 数组异或操作
 # shell 根据创建时间自动生成
 date: 2021-05-07 17:05:41
 tags:
-- 位操作
+- 位运算
 - LeetCode
 categories:
 - 算法题解
@@ -25,7 +25,7 @@ categories:
 
 请返回 `nums` 中所有元素按位异或（XOR）后得到的结果。
 
-> #### [1486. 数组异或操作](https://leetcode-cn.com/problems/xor-operation-in-an-array/)
+> [1486. 数组异或操作](https://leetcode-cn.com/problems/xor-operation-in-an-array/)
 
 
 
