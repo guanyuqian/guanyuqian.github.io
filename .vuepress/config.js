@@ -39,7 +39,9 @@ module.exports = {
     ['vuepress-plugin-medium-zoom'], ['@vuepress/last-updated', {
         transformer: (timestamp, lang) =>{
             // 不要忘了安装 moment
-            const moment = require('moment') moment.locale(lang) return moment(timestamp).fromNow()
+            const moment = require('moment') 
+            moment.locale(lang) 
+            return moment(timestamp).fromNow()
         }
     }], ['@vuepress/pwa', {
         serviceWorker: true,
