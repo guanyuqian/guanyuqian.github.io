@@ -3,7 +3,7 @@ title: 二维区域和检索 - 矩阵不可变
 # shell 根据创建时间自动生成
 date: 2021-04-22 16:38:03
 tags:
-- 动态规划
+- DP
 - 容斥定理
 - LeetCode
 categories:

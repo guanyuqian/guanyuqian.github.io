@@ -4,7 +4,7 @@ title: 递增顺序搜索树
 date: 2021-04-25 10:26:28
 tags:
 - 树
-- 深度优先搜索
+- DFS
 - 递归
 - LeetCode
 categories:

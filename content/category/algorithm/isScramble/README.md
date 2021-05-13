@@ -2,10 +2,10 @@
 title: 扰乱字符串
 date: 2021-04-16 12:32:35
 tags:
- - 区间动态规划
+ - 区间DP
  - 记忆化递归
  - 递归
- - 动态规划
+ - DP
  - LeetCode
 categories:
  -  算法题解
@@ -134,7 +134,7 @@ func hashCode(str string) (res int) {
 
 
 
-### 解法2：区间动态规划
+### 解法2：区间DP
 
 
 

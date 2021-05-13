@@ -3,8 +3,8 @@ title: 粉刷房子 III
 # shell 根据创建时间自动生成
 date: 2021-05-04 12:25:55
 tags:
-- 动态规划
-- 区间动态规划
+- DP
+- 区间DP
 - LeetCode
 categories:
 - 算法题解

@@ -3,7 +3,7 @@ title: 删除并获得点数
 # shell 根据创建时间自动生成
 date: 2021-05-05 12:43:44
 tags:
-- 动态规划
+- DP
 - 排序
 - LeetCode
 categories:
