@@ -2,7 +2,7 @@
 title: 实现 Trie (前缀树)
 date: 2021-04-14 07:39:22
 tags:
- - 前缀树
+ - Trie
  - 数据结构
  - LeetCode
 categories:
