@@ -178,7 +178,7 @@ module.exports = {
         },
         {
             "title":"妄越",
-            "link":"rrazz.love",
+            "link":"http://rrazz.love",
             "desc":"个人博客",
             "email":"736751542@qq.com",
             "logo":"http://rrazz.love/img/head.jpg"
