@@ -20,3 +20,14 @@ publish: false
     "logo"  :"（非必须）网站的logo的url"
 }
 ```
+
+比如，我的博客的友链形式如下：
+```json
+{
+    "title" :"G-Blog",
+    "link"  :"www.guanyuqian.com",
+    "desc"  :"guanyuqian 的个人博客",
+    "email" :"yuqianguan@qq.com",
+    "logo"  :"https://www.guanyuqian.com/logo.png"
+}
+```

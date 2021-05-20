@@ -160,16 +160,31 @@ module.exports = {
         "type": "blog",
         "blogConfig": {
             "category": {
-                "location": 4,
+                "location": 3,
                 "text": "分类"
             },
             "tag": {
-                "location": 3,
+                "location": 2,
                 "text": "标签"
             }
 
         },
-        "friendLink": [{
+        "friendLink": [
+        {
+            "title" :"G-Blog",
+            "link"  :"www.guanyuqian.com",
+            "desc"  :"guanyuqian 的个人博客",
+            "email" :"yuqianguan@qq.com",
+            "logo"  :"https://www.guanyuqian.com/logo.png"
+        },
+        {
+            "title":"妄越",
+            "link":"rrazz.love",
+            "desc":"个人博客",
+            "email":"736751542@qq.com",
+            "logo":"https://sm.ms/image/nNqk9W61YAelwBR"
+        },
+        {
             "title": "午后南杂",
             "desc": "Enjoy when you can, and endure when you must.",
             "email": "1156743527@qq.com",
