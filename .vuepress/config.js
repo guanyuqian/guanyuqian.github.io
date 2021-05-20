@@ -187,8 +187,8 @@ module.exports = {
             "title": "午后南杂",
             "desc": "Enjoy when you can, and endure when you must.",
             "email": "1156743527@qq.com",
-            "logo":"https://www.recoluan.com/head.png",
-            "link": "https://www.recoluan.com/"
+            "logo":"http://www.recoluan.com/head.png",
+            "link": "http://www.recoluan.com/"
         },
         {
             "title": "vuepress-theme-reco",
