@@ -160,7 +160,7 @@ module.exports = {
         "type": "blog",
         "blogConfig": {
             "category": {
-                "location": 2,
+                "location": 4,
                 "text": "分类"
             },
             "tag": {
