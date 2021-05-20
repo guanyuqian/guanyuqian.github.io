@@ -5,7 +5,7 @@ date: 2021-04-13 23:06:01
 tags:
  - 个人博客
 categories:
- - 折腾随记
+ - 折腾日志
 sidebar: true
 
 # 是否发布

@@ -5,7 +5,7 @@ date: 2019-12-16 14:47
 tags:
 - 云服务
 categories:
-- 折腾随记
+- 折腾日志
 # author: Guanyuqian
 # sidebar: true
 # 是否发布

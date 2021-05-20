@@ -5,7 +5,7 @@ date : 2021-04-17 19:43:18
 tags:
 - 个人博客
 categories:
-- 折腾随记
+- 折腾日志
 # author: Guanyuqian
 # sidebar: true
 # 是否发布

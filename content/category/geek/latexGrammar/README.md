@@ -5,7 +5,7 @@ date: 2021-04-17 12:23:58
 tags:
  - Latex
 categories:
- - 折腾随记
+ - 折腾日志
 author: Guanyuqian
 # 侧边栏开关
 # sidebar: true
