@@ -25,9 +25,9 @@ publish: false
 ```json
 {
     "title" :"G-Blog",
-    "link"  :"www.guanyuqian.com",
-    "desc"  :"guanyuqian 的个人博客",
+    "link"  :"https://www.guanyuqian.com",
+    "desc"  :"Go the extra mile.",
     "email" :"yuqianguan@qq.com",
-    "logo"  :"https://www.guanyuqian.com/logo.png"
+    "logo"  :"https://www.guanyuqian.com/logo.png"    
 }
 ```

@@ -1,6 +1,6 @@
 module.exports = {
     "title": "G-Blog",
-    "description": "go the extra mile.",
+    "description": "Go the extra mile.",
     "dest": "docs",
     "plugins": [['flowchart'],
     // ['cursor-effects',
@@ -159,42 +159,42 @@ module.exports = {
         }],
         "type": "blog",
         "blogConfig": {
+            "tag": {
+                "location": 3,
+                "text": "标签"
+            },
             "category": {
                 "location": 3,
                 "text": "分类"
             },
-            "tag": {
-                "location": 2,
-                "text": "标签"
-            }
-
         },
         "friendLink": [
         {
             "title" :"G-Blog",
-            "link"  :"www.guanyuqian.com",
-            "desc"  :"guanyuqian 的个人博客",
+            "link"  :"https://www.guanyuqian.com",
+            "desc"  :"Go the extra mile.",
             "email" :"yuqianguan@qq.com",
-            "logo"  :"https://www.guanyuqian.com/logo.png"
+            "logo"  :"https://www.guanyuqian.com/logo.png"    
         },
         {
             "title":"妄越",
             "link":"rrazz.love",
             "desc":"个人博客",
             "email":"736751542@qq.com",
-            "logo":"https://sm.ms/image/nNqk9W61YAelwBR"
+            "logo":"http://rrazz.love/img/head.jpg"
         },
         {
             "title": "午后南杂",
             "desc": "Enjoy when you can, and endure when you must.",
             "email": "1156743527@qq.com",
-            "link": "https://www.recoluan.com"
+            "logo":"https://www.recoluan.com/head.png",
+            "link": "https://www.recoluan.com/"
         },
         {
             "title": "vuepress-theme-reco",
             "desc": "A simple and beautiful vuepress Blog & Doc theme.",
-            "logo": "//vuepress-theme-reco.recoluan.com/icon_vuepress_reco.png",
-            "link": "https://vuepress-theme-reco.recoluan.com"
+            "logo": "https://vuepress-reco.github.io/icon_vuepress_reco.png",
+            "link": "https://vuepress-reco.github.io"
         }],
         "logo": "/logo.png",
         "search": true,
