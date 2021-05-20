@@ -179,7 +179,7 @@ module.exports = {
         {
             "title":"妄越",
             "link":"http://rrazz.love",
-            "desc":"个人博客",
+            "desc":"平生蹉跎少年志，雨落樱花又一年。",
             "email":"736751542@qq.com",
             "logo":"http://rrazz.love/img/head.jpg"
         },
