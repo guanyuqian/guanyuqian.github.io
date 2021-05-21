@@ -18,12 +18,22 @@ fi
 
 file_path="content/category/$file_name"
 file="$file_path/README.md"
-content_time=$(date "+%Y-%m-%d %H:%M:%S")
-
 if [ ! -d "$file" ]; then
 	mkdir -p $file_path
 	cp .vuepress/public/markdown.template $file
-	sed -i "4c date: $content_time" $file
+	content_time=$(date "+%Y-%m-%d %H:%M:%S")
+	if [[ `uname` == 'Darwin' ]]; then
+		# Mac OS X 操作系统
+		sed -i '' "4c\ 
+			date: ${content_time}
+			" $file
+	else
+		sed -i "4c date: $content_time" $file
+	# elif["$(expr substr $(uname -s) 1 5)"=="Linux"];then   
+	# # GNU/Linux操作系统
+	# elif["$(expr substr $(uname -s) 1 10)"=="MINGW32_NT"];then    
+	# # Windows NT操作系统
+	fi
 	
 	if [ -x "$(command -v Typora)" ]; then
 		Typora $file
