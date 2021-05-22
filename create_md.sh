@@ -25,7 +25,7 @@ if [ ! -d "$file" ]; then
 	if [[ `uname` == 'Darwin' ]]; then
 		# Mac OS X 操作系统
 		sed -i '' "4c\ 
-			date: ${content_time}
+date: ${content_time}
 			" $file
 	else
 		sed -i "4c date: $content_time" $file
