@@ -64,13 +64,9 @@ categories:
 ## 提示
 
 - `m == matrix.length`
-
 - `n == matrix[i].length`
-
 - `1 <= m, n <= 1000`
-
 - `0 <= matrix[i][j] <= 106`
-
 - `1 <= k <= m * n`
 
   
@@ -82,7 +78,7 @@ categories:
 
 
 
-创建二维数组 sum[][]sum[][]，令 sum[i][j]sum[i][j] 为以 (i, j)(i,j) 为右下角的子矩阵的异或和，我们可以得出计算公式：`sum[i][j]=sum[i-1][j]⊕sum[i][j-1]⊕sum[i-1][j-1]⊕sum[i-1][j-1]`
+创建二维数组 `sum[][]`，令 `sum[i][j]` 为以 `(i,j)`为右下角的子矩阵的异或和，我们可以得出计算公式：`sum[i][j] = sum[i-1][j] ^ sum[i][j-1] ^ sum[i-1][j-1] ^ sum[i-1][j-1]`。
 
 剩下的问题是，如果从所有的「子矩阵异或和」找到第 `k` 大的值。
 
