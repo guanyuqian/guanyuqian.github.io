@@ -45,10 +45,6 @@ categories:
 Alice 有两个选择: 擦掉数字 1 或 2。
 如果擦掉 1, 数组变成 [1, 2]。剩余数字按位异或得到 1 XOR 2 = 3。那么 Bob 可以擦掉任意数字，因为 Alice 会成为擦掉最后一个数字的人，她总是会输。
 如果 Alice 擦掉 2，那么数组变成[1, 1]。剩余数字按位异或得到 1 XOR 1 = 0。Alice 仍然会输掉游戏。
-
-来源：力扣（LeetCode）
-链接：https://leetcode-cn.com/problems/chalkboard-xor-game
-著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。
 ```
 
 

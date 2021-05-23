@@ -147,10 +147,6 @@ candidates 中的每个数字在每个组合中只能使用一次。
 (2, 2)
 (3, 1)
 请注意，顺序不同的序列被视作不同的组合。
-
-来源：力扣（LeetCode）
-链接：https://leetcode-cn.com/problems/combination-sum-iv
-著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。
 ```
 
 #### 提示
