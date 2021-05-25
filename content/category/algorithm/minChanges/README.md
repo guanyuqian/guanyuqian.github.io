@@ -105,48 +105,40 @@ for x in arr[i] {
 最终的实现结果如下：
 
 ```go
-func largestDivisibleSubset(nums []int) (res []int) {
-    sort.Ints(nums)
-    n := len(nums)
-
-    direct := make([][]int, n)
-    for i := range nums {
-        for j := i + 1; j < n; j++ {
-            if nums[i] > nums[j] && nums[i] % nums[j] == 0 {
-                direct[j] = append(direct[j], i)
-            } else if nums[j] > nums[i] && nums[j] % nums[i] == 0 {
-                direct[i] = append(direct[i], j)
-            }
-        }
-    }
-
+func minChanges(nums []int, k int) int {
+    dpPre, count, sum, minPre := [1<<10]int{},  make([]map[int]int, k),  make([]int, k), 0
     
-    pre_len := make([]int, n)
-    var dfs func(i int, trace []int)
-    dfs = func(i int, trace []int) {
-        pre_len[i] = len(trace)
-        trace = append(trace, nums[i])
-        // 该节点被访问过 或者 该节点没有更大的整除指向
-        if len(res) < len(trace) {
-            res = make([]int, len(trace))
-            copy(res, trace)
+    for i, num := range nums {
+        if count[i % k] == nil {
+            count[i % k] = map[int]int{}
         }
-
-        for _, j := range direct[i] {
-            if pre_len[j] < len(trace) {
-                dfs(j, trace)
+        count[i % k][num]++
+        sum[i % k]++
+    }
+    
+    for i, s := range sum {
+        dpCur, minCur := [1<<10]int{}, minPre + s
+        for mask := 0; mask < (1<<10); mask++ {
+            dpCur[mask] = minPre + s
+            if i == 0 {
+                dpCur[mask] = s - count[i][mask]
+            } else {
+                for x, cnt := range count[i] {
+                    dpCur[mask] = min(dpCur[mask], dpPre[mask ^ x] + s - cnt)
+                }
             }
+            minCur = min(minCur, dpCur[mask])
         }
-
-        trace = trace[:len(trace) - 1]
+        minPre, dpPre = minCur, dpCur
     }
 
-    for i := range nums {
-        if pre_len[i] == 0 {
-            dfs(i, []int{})
-        }
-    }
+    return dpPre[0]
+}
 
-    return
+func min(a, b int) int {
+    if a < b {
+        return a
+    }
+    return b
 }
 ```
