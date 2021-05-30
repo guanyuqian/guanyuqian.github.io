@@ -30,7 +30,7 @@ categories:
 
 给定一个整数数组和一个整数 **k，**你需要找到该数组中不超过 **k** 的最大连续的子数组和。
 
-> 相关题解为 [和为K的连续子数组](https://guanyuqian.com/content/Category/algorithm/subarraySum)
+> 相关题解为 [和为K的连续子数组](https://guanyuqian.com/content/category/algorithm/subarraySum)
 
 ## 示例
 
@@ -51,15 +51,15 @@ categories:
 
 ### 求连续子数组和：前缀和
 
-这是求连续子数组和的基本解法，分析和 [和为K的连续子数组](https://guanyuqian.com/content/Category/algorithm/subarraySum) 中一致。
+这是求连续子数组和的基本解法，分析和 [和为K的连续子数组](https://guanyuqian.com/content/category/algorithm/subarraySum) 中一致。
 
 ### 判断子数组和不超过为k：有序集合
 
-这个条件是和和 [和为K的连续子数组](https://guanyuqian.com/content/Category/algorithm/subarraySum) 中不一致的地方。
+这个条件是和和 [和为K的连续子数组](https://guanyuqian.com/content/category/algorithm/subarraySum) 中不一致的地方。
 
 查找不超过**k**的方法，使用有序列表或者有序集合维护前缀和数组`prefix[]`，然后利用二分法在`O(nlogn)`的时间复杂度内找到合适的值。
 
-这里有序集合的实现方法参见 [Go语言有序集合的简单实现](https://www.guanyuqian.com/content/Category/algorithm/orderSetOfGo)
+这里有序集合的实现方法参见 [Go语言有序集合的简单实现](https://www.guanyuqian.com/content/category/algorithm/orderSetOfGo)
 
 ```go
 import (
