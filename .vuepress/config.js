@@ -18,6 +18,13 @@ module.exports = {
             return new Date().toISOString()
         }
     }],
+    // 版权声明 
+    // https://www.npmjs.com/package/vuepress-plugin-copyright
+    ['copyright', {
+        // noCopy: true,   // the selected text will be uncopiable
+        // noSelect
+        minLength: 100, // if its length is greater than 100
+    }],
     // 代码复制弹窗插件
     ["vuepress-plugin-nuggets-style-copy", {
         copyText: "复制代码",
