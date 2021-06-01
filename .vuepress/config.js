@@ -24,6 +24,10 @@ module.exports = {
         // noCopy: true,   // the selected text will be uncopiable
         // noSelect
         minLength: 100, // if its length is greater than 100
+        authorName: {
+          "en-US": "Guanyuqian",
+          "zh-CN": "Guanyuqian"
+        }
     }],
     // 代码复制弹窗插件
     ["vuepress-plugin-nuggets-style-copy", {
