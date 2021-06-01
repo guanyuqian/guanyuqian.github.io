@@ -4,7 +4,7 @@ title: 和为K的连续子数组
 date: 2021-04-22 10:53:51
 tags:
 - 连续子数组
-- 数组前缀和
+- 前缀和
 - 哈希表
 - LeetCode
 categories:
@@ -55,7 +55,7 @@ categories:
 
 ### 求子数组和 前缀和
 
-通过维护数组每一项前缀和，可以在得到任意子数组的和。设数组前缀和为`prefix[]`，那么子数组`nums[i:j + 1]`的和为：
+通过维护数组每一项前缀和，可以在得到任意子数组的和。设前缀和为`prefix[]`，那么子数组`nums[i:j + 1]`的和为：
 $$
 subarraySum(nums,i,j) = 
 \begin{cases}

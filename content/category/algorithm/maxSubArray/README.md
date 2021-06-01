@@ -4,7 +4,7 @@ title: 最大和的连续子数组
 date: 2021-04-22 10:44:01
 tags:
 - 连续子数组
-- 数组前缀和
+- 前缀和
 - DP
 - LeetCode
 categories:
