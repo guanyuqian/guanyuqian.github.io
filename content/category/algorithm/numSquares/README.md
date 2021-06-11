@@ -63,7 +63,7 @@ categories:
 
 ### 解法1： DP
 
-- 时间复杂度：$\mathcal{O}(n\sqrt{n}})$
+- 时间复杂度：$\mathcal{O}(n\sqrt{n})$
 - 空间复杂度：$\mathcal{O}(n)$
 
 把每个完全平方数当作一件物品，价值和容量就是数值。
