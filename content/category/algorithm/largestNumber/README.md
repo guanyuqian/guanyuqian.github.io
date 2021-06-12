@@ -81,7 +81,7 @@ categories:
 - `1 <= target <= 5000`
 
 ## 解法：DP
-- 时间复杂度：$\mathcal{O}(n \dot target)$
+- 时间复杂度：$\mathcal{O}(n \cdot target)$
 - 空间复杂度：$\mathcal{O}(target)$
 
 若两个整数位数不同，位数更多的整数必然大于位数小的整数。因此我们需要先计算出可以得到的整数的最大位数。
