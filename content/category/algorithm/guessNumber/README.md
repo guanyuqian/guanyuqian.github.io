@@ -42,11 +42,6 @@ categories:
 
 > [374. 猜数字大小](https://leetcode-cn.com/problems/guess-number-higher-or-lower/)
 
-## 提示
-
-- `1 <= n <= 2^31 - 1`
-- `1 <= pick <= n`
-
 
 
 ## 示例
@@ -64,6 +59,14 @@ categories:
 输入：n = 2, pick = 2
 输出：2
 ```
+
+
+
+## 提示
+
+- `1 <= n <= 2^31 - 1`
+- `1 <= pick <= n`
+
 
 
 ## 解法：二分查找
