@@ -3,7 +3,7 @@ title: 打开转盘锁
 # shell 根据创建时间自动生成
 date: 2021-06-25 09:13:33
 tags:
-- DFS
+- BFS
 - LeetCode
 categories:
 - 算法题解
