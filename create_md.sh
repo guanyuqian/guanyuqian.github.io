@@ -6,6 +6,7 @@
 
 
 echo -e "Open file with sublime text by default."	
+cd $G_BLOG
 
 if [ -n "$1" ]; then
 	file_name="$1"
