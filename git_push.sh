@@ -1,4 +1,4 @@
-cd $G_BLOG
+# cd $G_BLOG
 git add .
 git commit -m "docs(content): Added blog content"
 git push
