@@ -1,16 +1,15 @@
 ---
-title: utf-8编码解析
+title: 《Go语言圣经中文版》笔记
 # shell 根据创建时间自动生成
-date: 2021-06-25 18:52:04
+date: 2021-07-03 16:29:18
 tags:
-- DP
-- DAG
-- LeetCode
+- GO语言
 categories:
 - 算法题解
 # author: Guanyuqian
 # sidebar: true
 # 是否发布
+# publish: true
 # 文档加密，md5加密的32位密文
 keys:
 	- 'e10adc3949ba59abbe56e057f20f883e'
@@ -21,7 +20,7 @@ keys:
 
 ::: warning
 
-此处填写本题目的摘要
+本笔记是《Go语言圣经》
 
 :::
 
