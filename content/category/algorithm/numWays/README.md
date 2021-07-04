@@ -101,7 +101,7 @@ func numWays(n int, relation [][]int, k int) int {
 ### 解法2： BFS
 
 - 时间复杂度：$\mathcal{O}(n^k)$
-- 空间复杂度：$\mathcal{O}(*n*+*m*+n^k)$
+- 空间复杂度：$\mathcal{O}(n+m+n^k)$
 
 从节点 0 出发做广度优先搜索，当遍历到 k*k* 层时，如果位于节点 n−1，则将方案数加 1。搜索结束之后，即可得到总的方案数。
 
