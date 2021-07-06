@@ -7,12 +7,21 @@
 
 echo -e "Open file with sublime text by default."	
 # cd $G_BLOG
-
-if [! $G_BLOG];then
-	echo "\"\$G_BLOG\" EMV IS NOT DEFINED"
-else 
- 	cd $G_BLOG
+if [[ `uname` == 'Darwin' ]]; then
+		# Mac OS X 操作系统
+	if [! $G_BLOG];then
+		echo "\"\$G_BLOG\" EMV IS NOT DEFINED"
+	else 
+	 	cd $G_BLOG
+	fi
+else
+	if [ -z $G_BLOG ];then
+		echo "\"\$G_BLOG\" EMV IS NOT DEFINED"
+	else
+		cd $G_BLOG
+	fi
 fi
+
 if [ -n "$1" ]; then
 	file_name="$1"
 else
