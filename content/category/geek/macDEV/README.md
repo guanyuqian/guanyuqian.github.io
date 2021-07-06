@@ -47,12 +47,22 @@ LINUX/MAC平台开发快捷指南
 
 ### [终端快捷键](https://ios.bytedance.net/wlapi/tosDownload/effectivemac/xi-tong-pei-zhi/xi-tong-kuai-jie-jian-jin-jie.html)
 
-1. Ctrl + A：移动到行首
-2. Ctrl + E：移动到行尾
-3. Ctrl + K：删除到行尾
-4. Option + ←：光标向左移动一个单词
-5. Option + →：光标向右移动一个单词
-6. Option + Delete：删除一个单词
+1. 缩小当前应用：Command + M
+2. 恢复被缩小的应用：Command + Tab 选中后松开Tab按Option 然后松开所有案件
+3. 移动到行尾：Ctrl + E
+4. 移动到行首：Ctrl + A
+5. 移动到行尾：Ctrl + E
+6. 删除到行尾：Ctrl + K
+7. 光标向左移动一个单词：Option + ←
+8. 光标向右移动一个单词：Option + →
+9. 删除一个单词：Option + Delete
+10. 选中当前行 – Shift + Command + ← + →
+11. 选中当前位置到本行开头的文字 – Shift + Command + 左方向键←
+12. 选中当前位置到本行末尾的文字 – Shift + Command + 左方向键→
+13. 选中当前位置到所在单词开头的文字 – Shift + Option + 左方向键←
+14. 选中当前位置到所在单词末尾的文字 – Shift + Option + 右方向键→
+15. 选中当前位置到整个文档开头的文字 – Shift + Command + 上方向键↑
+16. 选中当前位置到整个文档末尾的文字 – Shift + Command + 下方向键↓
 
 ### 查找文件
 
