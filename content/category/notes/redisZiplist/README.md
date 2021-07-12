@@ -7,7 +7,7 @@ tags:
 - 数据库
 - 数据结构
 categories:
-- 算法题解
+- 学习笔记
 # author: Guanyuqian
 # sidebar: true
 # 是否发布
