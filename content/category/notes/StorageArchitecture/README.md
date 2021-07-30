@@ -4,7 +4,6 @@ title: 存储系统分类浅析
 date: 2021-07-24 12:10:51
 tags:
 - 数据库
-- LeetCode
 categories:
 - 学习笔记
 # author: Guanyuqian
