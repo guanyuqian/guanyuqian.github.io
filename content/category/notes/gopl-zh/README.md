@@ -1,7 +1,7 @@
 ---
 title: 《Go语言圣经中文版》笔记
 # shell 根据创建时间自动生成
-date: 2021-07-12 16:29:18
+date: 2021-08-02 14:03:39
 tags:
 - GO语言
 categories:
@@ -140,7 +140,129 @@ for _, rmdir := range rmdirs {
 
 如果在deferred函数中调用了内置函数recover，并且定义该defer语句的函数发生了panic异常，recover会使程序从panic中恢复，并返回panic value。导致panic异常的函数不会继续运行，但能正常返回。在未发生panic时调用recover，recover会返回nil。
 
+## 方法
+
+方法特指某一结构体中的成员函数。
+
+### 不命名嵌入结构体
+
+我们可以通过不命名嵌入结构体来扩展方法。
+
+```go
+import "image/color"
+
+type Point struct{ X, Y float64 }
+
+type ColoredPoint struct {
+    Point
+    Color color.RGBA
+}
+
+func fun() {
+  var cp ColoredPoint
+  cp.X = 1
+  fmt.Println(cp.Point.X) // "1"
+  cp.Point.Y = 2
+  fmt.Println(cp.Y) // "2"
+}
+```
+
+
+
+但这只表达了"has a"的概念，所以在当做参数传递的时候必须显示选择嵌入结构体。
+
+```
+p.Distance(q) // compile error: cannot use q (ColoredPoint) as Point
+```
+
+### 方法表达式
+
+我们也可以通过命名一个方法表达式来对方法调用进行简化。
+
+```go
+p := Point{1, 2}
+q := Point{4, 6}
+
+distanceFromP := p.Distance        // method value
+fmt.Println(distanceFromP(q))      // "5"
+var origin Point                   // {0, 0}
+fmt.Println(distanceFromP(origin)) // "2.23606797749979", sqrt(5) 
+fmt.Printf("%T\n", distance) // "func(Point, Point) float64"
+
+
+scaleP := p.ScaleBy // method value
+scaleP(2)           // p becomes (2, 4)
+scaleP(3)           //      then (6, 12)
+scaleP(10)          //      then (60, 120)
+```
+
+
+
+## Goroutines & Channels
+
+Goroutine & Channel 是Go的一个特殊基础类型，在语言层面上实现了操作系统或者是一些中间件的并发协程与通信功能。
+
+这两种功能的试用方法也很简单，如下语句：
+
+```go
+f()    // call f(); wait for it to return
+go f() // create a new goroutine that calls f(); don't wait
+
+
+ch <- x  // a send statement
+x = <-ch // a receive expression in an assignment statement
+<-ch     // a receive statement; result is discarded
+```
+
+## 接口
+
+Go中的接口的概念类似于合约，需要某个类型满足所有该接口指定的合约方法，仓能认为某个类型符合该接口。
+
+![img](.\ch7-02.png)
+
+这里有个需要注意的地方，就是**一个包含nil指针的接口不是nil接口**。下列代码中的buf虽然值为nil，但是在进入f判断的时候会报panic，因为buf并不属于io.Writer接口。
+
+```go
+const debug = true
+
+func main() {
+    var buf *bytes.Buffer
+    if debug {
+        buf = new(bytes.Buffer) // enable collection of output
+    }
+    f(buf) // NOTE: subtly incorrect!
+    if debug {
+        // ...use buf...
+    }
+}
+
+// If out is non-nil, output will be written to it.
+func f(out io.Writer) {
+    // ...do something...
+    if out != nil { 
+        out.Write([]byte("done!\n"))
+    }
+}
+```
+
+
+
+### 缓存Channel
+
+Channel对象中有缓存的概念，如果缓存为0可以立即为同步通信。
+
+```go
+ch = make(chan int)    // unbuffered channel
+ch = make(chan int, 0) // unbuffered channel
+ch = make(chan int, 3) // buffered channel with capacity 3
+```
+
+### 单向Channel
+
+Go语言的类型系统提供了单方向的channel类型，分别用于只发送或只接收的channel。类型`chan<- int`表示一个只发送int的channel，只能发送不能接收。相反，类型`<-chan int`表示一个只接收int的channel，只能接收不能发送。（箭头`<-`和关键字chan的相对位置表明了channel的方向。）这种限制将在编译期检测。
+
+
+
 to be continue...
 
-> https://books.studygolang.com/gopl-zh/ch5/ch5-08.html
-
+> https://books.studygolang.com/gopl-zh/ch9/ch9.html
