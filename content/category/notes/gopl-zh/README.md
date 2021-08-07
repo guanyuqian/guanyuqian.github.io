@@ -218,7 +218,7 @@ x = <-ch // a receive expression in an assignment statement
 
 Go中的接口的概念类似于合约，需要某个类型满足所有该接口指定的合约方法，仓能认为某个类型符合该接口。
 
-![img](ch7-02.png)
+![img](./ch7-02.png)
 
 这里有个需要注意的地方，就是**一个包含nil指针的接口不是nil接口**。下列代码中的buf虽然值为nil，但是在进入f判断的时候会报panic，因为buf并不属于io.Writer接口。
 

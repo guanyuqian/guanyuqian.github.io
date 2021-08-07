@@ -1,9 +1,9 @@
 ---
-title: golang 时间转换
+title: Golang 时间转换
 # shell 根据创建时间自动生成
 date: 2021-07-30 09:05:46
 tags:
-- golang
+- Golang
 - LeetCode
 categories:
 - 学习笔记
@@ -21,13 +21,13 @@ categories:
 
 ::: warning
 
-golang时间转换比较麻烦，在这里记录一下。
+Golang时间转换比较麻烦，在这里记录一下。
 
 :::
 
 <!-- more -->
 
-golang时间转换比较麻烦，在这里记录一下。
+
 
 
 ```go
