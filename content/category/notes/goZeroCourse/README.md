@@ -3,7 +3,7 @@ title: Go Zero学习笔记
 # shell 根据创建时间自动生成
 date: 2021-04-25 12:01:10
 tags:
-- Go 语言
+- Go
 - 微服务框架
 categories:
 - 学习笔记

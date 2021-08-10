@@ -3,8 +3,8 @@ title: 《Go语言圣经中文版》笔记
 # shell 根据创建时间自动生成
 date: 2021-08-02 14:03:39
 tags:
-- GO语言
-categories:
+- GO
+categories
 - 学习笔记
 # author: Guanyuqian
 # sidebar: true
@@ -261,8 +261,25 @@ ch = make(chan int, 3) // buffered channel with capacity 3
 
 Go语言的类型系统提供了单方向的channel类型，分别用于只发送或只接收的channel。类型`chan<- int`表示一个只发送int的channel，只能发送不能接收。相反，类型`<-chan int`表示一个只接收int的channel，只能接收不能发送。（箭头`<-`和关键字chan的相对位置表明了channel的方向。）这种限制将在编译期检测。
 
+## Goroutine
 
+### 动态栈
+
+与线程不同，对每个goroutine来说初始分配的栈空间都是很小的（2K VS 2M），但是goroutine会根据需要后期修改栈空间（至多超过1GB）
+
+### 调度
+
+Go运行时会包含一个自己的调度器，该调度器m个goroutine协程，可以映射到n个线程上并行。goroutine的阻塞睡眠并不会陷入内核，而会在Go调度器这层进行处理，所以goroutine的切换代价要小得多。通过`GOMAXPROCS`参数可以指定Go调度器的调度的线程上限。
+
+![img](https://img.taohuawu.club/gallery/GMP-scheduler.png?imageView2/2/w/1280/format/jpg/interlace/1/q/100)
+
+### 没有ID
+
+goroutine的另一个特点就是没有ID号，原因是不希望协程的信息被滥用，就和减少全局变量的定义一样。
+
+## 并发
 
 to be continue...
 
 > https://books.studygolang.com/gopl-zh/ch9/ch9.html
+

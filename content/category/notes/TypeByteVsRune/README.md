@@ -3,7 +3,7 @@ title: Golang中string、bytes、rune的区别
 # shell 根据创建时间自动生成
 date: 2021-07-30 09:08:34
 tags:
-- Golang
+- Go
 categories:
 - 学习笔记
 # author: Guanyuqian

@@ -4,7 +4,7 @@ title: Go语言有序集合的简单实现
 date: 2021-04-22 12:45:41
 tags:
 - 数据结构
-- Go语言
+- Go
 - 有序集合
 categories:
 - 算法题解
