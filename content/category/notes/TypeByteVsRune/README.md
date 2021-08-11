@@ -3,19 +3,9 @@ title: Golang中string、bytes、rune的区别
 # shell 根据创建时间自动生成
 date: 2021-07-30 09:08:34
 tags:
-- Golang
+- Go
 categories:
 - 学习笔记
-# author: Guanyuqian
-# sidebar: true
-# 是否发布
-# publish: true
-# 文档加密，md5加密的32位密文
-# keys:
-# 	- 'e10adc3949ba59abbe56e057f20f883e'
-# copyright: false # disable the plugin in this page 
-# copyright:
-#  minLength: 40 # It will override global configuration. 
 ---
 
 ::: warning

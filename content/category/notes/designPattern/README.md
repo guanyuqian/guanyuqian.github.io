@@ -3,7 +3,7 @@ title: GO语言实现设计模式
 date: 2020-11-20
 tags:
  - 设计模式
- - GO 语言
+ - GO
 categories:
  -  学习笔记
 sidebar: true
