@@ -6,14 +6,6 @@ tags:
 - GO
 categories
 - 学习笔记
-# author: Guanyuqian
-# sidebar: true
-# 是否发布
-# publish: true
-# 文档加密，md5加密的32位密文
-# copyright: false # disable the plugin in this page 
-# copyright:
-#  minLength: 40 # It will override global configuration. 
 ---
 
 ::: warning

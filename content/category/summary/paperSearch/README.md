@@ -6,13 +6,6 @@ tags:
 - 论文写作
 categories:
 - 个人总结
-# author: Guanyuqian
-# sidebar: true
-# 是否发布
-# publish: true
-# 文档加密，md5加密的32位密文
-# keys:
-# 	- 'e10adc3949ba59abbe56e057f20f883e'
 ---
 
 ::: warning
