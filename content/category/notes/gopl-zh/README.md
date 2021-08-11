@@ -4,7 +4,7 @@ title: 《Go语言圣经中文版》笔记
 date: 2021-08-02 14:03:39
 tags:
 - GO
-categories
+categories:
 - 学习笔记
 ---
 
