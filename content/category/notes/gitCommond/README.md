@@ -37,6 +37,7 @@ git clean -df   # 删除当前目录下untrack文件和文件夹， 不包括.gi
 ```
 ### 覆盖上次提交，并推送至远程分支（一般是自己的分支）
 ```bash
+git add .
 git commit -am --amend # 覆盖上次提交
 git push -f # 强制推送到远程分支
 ```
