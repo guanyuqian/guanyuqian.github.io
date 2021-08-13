@@ -1,14 +1,11 @@
 ---
 title: 消息队列RocketMQ浅析
-
 # shell 根据创建时间自动生成
-
-date: 2021-08-12 16:32:26 tags:
-
+date: 2021-08-12 16:32:26
+tags:
 - MQ
 - 中间件 categories:
 - 学习笔记
-
 ---
 
 ::: warning
