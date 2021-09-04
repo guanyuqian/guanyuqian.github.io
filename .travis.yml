@@ -43,7 +43,7 @@ cleanup_job:
   when: always
 
 after_script:
-  - echo "$(cat .job_status)"
+  - echo "$(cat.job_status)"
 
 deploy:
   provider: pages
