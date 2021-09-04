@@ -108,7 +108,7 @@ This is a dangerous warning
 
 **输入**
 
-```text
+```
 @flowstart
 cond=>condition: Process?
 process=>operation: Process
