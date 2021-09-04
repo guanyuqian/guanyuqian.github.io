@@ -3,7 +3,7 @@ title: go环境变量配置 (GOROOT和GOPATH)
 # shell 根据创建时间自动生成
 date: 2021-04-27 19:32:24
 tags:
-- Go
+- Golang语言
 - 配置
 categories:
 - 学习笔记

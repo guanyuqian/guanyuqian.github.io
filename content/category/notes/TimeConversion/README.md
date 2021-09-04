@@ -3,7 +3,7 @@ title: Golang 时间转换
 # shell 根据创建时间自动生成
 date: 2021-07-30 09:05:46
 tags:
-- Go
+- Golang语言
 categories:
 - 学习笔记
 ---

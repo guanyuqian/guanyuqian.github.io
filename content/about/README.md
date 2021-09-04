@@ -61,7 +61,7 @@ publish: false
 
 ## 技能清单
 
-- 语言：golang、c++、python、shell
+- 语言：Golang、c++、python、shell
 - 数据库：mysql、redis、mongodb
 - 消息队列：RocketMQ，kafka、nsq
 - RPC：thrift、gRPC

@@ -3,7 +3,7 @@ title: 《Go语言圣经中文版》笔记
 # shell 根据创建时间自动生成
 date: 2021-08-11 13:59:33
 tags:
-- GO
+- Golang语言
 categories:
 - 学习笔记
 ---

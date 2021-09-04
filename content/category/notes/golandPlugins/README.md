@@ -3,7 +3,7 @@ title: Goland插件推荐
 # shell 根据创建时间自动生成
 date: 2021-08-12 10:47:44
 tags:
-- Goland
+- Goland IDE
 - 配置
 categories:
 - 折腾日志
@@ -45,11 +45,11 @@ categories:
 
 ### Icon: Atom Material Icons ⭐️⭐️⭐️
 
-要装插件，把goland中的所有icon改为atom样式，让你的goland与众不同。
+要装插件，把Goland中的所有icon改为atom样式，让你的Goland与众不同。
 
 ### Gopher ⭐️⭐️⭐️
 
-把goland所有进度条都变成小鼹鼠样式，非常可爱。
+把Goland所有进度条都变成小鼹鼠样式，非常可爱。
 
 ### CodeGlance ⭐️⭐️
 
@@ -67,20 +67,20 @@ categories:
 
 ### Key Promoter X ⭐️⭐️⭐️⭐️⭐️
 
-要装插件，每次用鼠标点按goland的按钮的时候，会提醒这个按钮的对应快捷键。面对goland如此庞杂的功能，这个插件简直就是神奇。
+要装插件，每次用鼠标点按Goland的按钮的时候，会提醒这个按钮的对应快捷键。面对Goland如此庞杂的功能，这个插件简直就是神奇。
 
 ### GitToolBox ⭐️⭐️⭐️⭐️⭐️
 
-要装插件，goland中Git GUI的增强版，最厉害的地方在于它的Blame功能，能够看到当前选择代码的Blame信息。
+要装插件，Goland中Git GUI的增强版，最厉害的地方在于它的Blame功能，能够看到当前选择代码的Blame信息。
 
 ### Goanno ⭐️⭐️⭐️⭐️
 
-要装插件，自动生成golang对应的函数、方法、结构体、接口等注释模板，把它的快捷键改成goland默认注释，可以无感使用。
+要装插件，自动生成Golang对应的函数、方法、结构体、接口等注释模板，把它的快捷键改成Goland默认注释，可以无感使用。
 
 ### Git Commit Template ⭐️⭐️⭐️
 
-要装插件，在GUI提交代码时，可以自动生成日志的模板。不过由于基本上都是用goland集成的Terminal进行代码提交，使用terminal的代码历史记忆和自动补全插件后可以更快的进行git管理，所以这个插件在我的使用中就没有很大用处了。
+要装插件，在GUI提交代码时，可以自动生成日志的模板。不过由于基本上都是用Goland集成的Terminal进行代码提交，使用terminal的代码历史记忆和自动补全插件后可以更快的进行git管理，所以这个插件在我的使用中就没有很大用处了。
 
 ### Kite ⭐️⭐️
 
-要装插件和软件，AI自动代码补全建议，算是goland本身代码补全上的增强版，可以做到无感使用，但是也没有感觉他的代码补全建议有多有效果。
+要装插件和软件，AI自动代码补全建议，算是Goland本身代码补全上的增强版，可以做到无感使用，但是也没有感觉他的代码补全建议有多有效果。

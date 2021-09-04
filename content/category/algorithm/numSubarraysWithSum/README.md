@@ -109,7 +109,7 @@ func numSubarraysWithSum(nums []int, goal int) (res int) {
     prefixs, prefix := map[int]int{0:1}, 0
     for i := range nums {
         prefix += nums[i]
-        res += prefixs[prefix - goal]
+        res += prefixs[prefix - Golang语言al]
         prefixs[prefix]++
     }
     return 
