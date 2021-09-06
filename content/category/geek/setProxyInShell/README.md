@@ -48,7 +48,7 @@ author: Guanyuqian
 
 打开CMD或者PowerShell，执行下面两个命令。
 
-```cmd
+```shell
 # 设置代理
 set http_proxy=127.0.0.1:1080
 set https_proxy=127.0.0.1:1080
@@ -56,7 +56,7 @@ set https_proxy=127.0.0.1:1080
 
 或者长期设置
 
-```cmd
+```shell
 # 设置代理
 netsh winhttp set proxy 127.0.0.1:1080
 

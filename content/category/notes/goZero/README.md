@@ -3,7 +3,7 @@ title: Go-Zero学习笔记
 # shell 根据创建时间自动生成
 date: 2021-04-30 20:10:04
 tags:
-- Go
+- Golang语言
 - 微服务框架
 categories:
 - 学习笔记
@@ -62,7 +62,7 @@ Go-Zero构建多RPC微服务的流程主要分为以下几步：
 
 > 使用一些工具能够提升开发效率
 
-- IDE：goland
+- IDE：Goland
   - 代码补全，格式化，自动导入包
   - 有goctl的插件支持，可以在GUI使用goctl
   - 可视化运行多处api与rpc服务

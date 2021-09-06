@@ -3,7 +3,7 @@ title: Go语言编码规范
 # shell 根据创建时间自动生成
 date: 2021-08-06 10:25:41
 tags:
-- Go
+- Golang语言
 categories:
 - 算法题解
 ---

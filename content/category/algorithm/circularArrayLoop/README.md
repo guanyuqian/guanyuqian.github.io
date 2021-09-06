@@ -164,7 +164,7 @@ func circularArrayLoop(nums []int) bool {
 
 特别地，拓扑排序无法区分自环和非自环，所以在代码中，我们需要特别考虑自环的情况。
 
-```c++
+```c
 class Solution {
 public:
     // 邻接表存储的图

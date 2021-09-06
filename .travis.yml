@@ -7,12 +7,11 @@ before_install:
   
 install:
  - yarn install
+ 
 script:
   - yarn build
   # github自动链接外部域名
   - echo 'www.guanyuqian.com' > docs/CNAME
-
-after_script:
   - cd docs
   - git init
   - git config --global user.name "guanyuqian"    #gh-pages显示发布的名字
@@ -28,6 +27,24 @@ after_script:
   - git push --quiet "https://${GITHUB_TOKEN}@github.com/guanyuqian/guanyuqian.github.io.git" master:gh-pages --tags
   # Coding
   - git push --quiet "https://${CODING_USER}:${CODING_TOKEN}@e.coding.net/guanyuqian/guanyuqian.coding.me/guanyuqian.coding.me.git" master:gh-pages --tags
+
+
+cleanup_build_job:
+  stage: cleanup_build
+  script:
+  - cleanup build when failed
+  when: on_failure
+
+
+cleanup_job:
+  stage: cleanup
+  script:
+  - cleanup after jobs
+  when: always
+
+after_script:
+  - echo "$(cat.job_status)"
+
 deploy:
   provider: pages
   skip_cleanup: true
