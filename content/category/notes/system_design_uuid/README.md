@@ -1,13 +1,11 @@
 ---
-title: 经典场景系统设计方案
+title: UUID生成系统
 # shell 根据创建时间自动生成
 date: 2021-10-27 20:36:50
 tags:
-- DP
-- DAG
-- LeetCode
+- 系统设计
 categories:
-- 算法题解
+- 学习笔记
 # author: Guanyuqian
 # sidebar: true
 # 是否发布
@@ -22,17 +20,21 @@ categories:
 
 ::: warning
 
-记录一下一些经典场景的系统设计方案
+现实中很多业务都有**生成唯一ID**的需求，例如：
+
+- 用户ID
+- 微博ID
+- 聊天消息ID
+- 帖子ID
+- 订单ID
 
 :::
+
+<!-- more -->
 
 > https://soulmachine.gitbooks.io/system-design/content/cn/
 >
 > https://zhuanlan.zhihu.com/p/82099063
-
-<!-- more -->
-
-## UUID生成系统
 
 在分布式系统中，经常需要对大量的数据、消息、http请求等进行唯一标识，例如：对于分布式系统，服务间相互调用需要唯一标识，调用链路分析的时候需要使用这个唯一标识。这个时候数据库自增主键已经不能满足需求，需要一个能够生成全局唯一ID的系统，这个系统需要满足以下需求：
 
