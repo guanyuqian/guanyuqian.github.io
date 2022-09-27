@@ -107,12 +107,12 @@ after_script:
   # Github 
   - git push --force --quiet "https://${GITHUB_TOKEN}@github.com/guanyuqian/guanyuqian.github.io.git" master:gh-pages
   # Coding 
-  - git push --force --quiet "https://${CODING_USER}:${CODING_TOKEN}@e.coding.net/guanyuqian/guanyuqian.coding.me/guanyuqian.coding.me.git" master:gh-pages
+  - git push --force --quiet "https://FrumRScNZy:${CODING_TOKEN}@e.coding.net/guanyuqian/guanyuqian.coding.me/guanyuqian.coding.me.git" master:master
   - git tag v0.0.$TRAVIS_BUILD_NUMBER -a -m "由TravisCI自动标记$TRAVIS_BUILD_NUMBER次"
   # Github
   - git push --quiet "https://${GITHUB_TOKEN}@github.com/guanyuqian/guanyuqian.github.io.git" master:gh-pages --tags
   # Coding
-  - git push --quiet "https://${CODING_USER}:${CODING_TOKEN}@e.coding.net/guanyuqian/guanyuqian.coding.me/guanyuqian.coding.me.git" master:gh-pages --tags
+  - git push --quiet "https://FrumRScNZy:${CODING_TOKEN}@e.coding.net/guanyuqian/guanyuqian.coding.me/guanyuqian.coding.me.git" master:master --tags
 deploy:
   provider: pages
   skip_cleanup: true
