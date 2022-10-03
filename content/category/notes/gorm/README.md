@@ -94,7 +94,7 @@ categories:
 
 每个Statement（语句）中有个map，记录**链式调用**中所有的clause，在执行chain method时会解析传入的clause，其中包含同类clause的合并、冲突解决等工作。
 
-```golang
+```go
 // chain Method合并
 DB.Table("users").Select("id, name, age").Where("id = ?", user3.ID)
 // SELECT id, name, age FROM users WHERE id = 1;
@@ -345,7 +345,7 @@ func Query(db *GORM.DB) {
 
 [Index](https://gorm.io/zh_CN/docs/indexes.html) 用于提高数据检索和 SQL 查询性能。 `Index Hints` 向优化器提供了在查询处理过程中如何选择索引的信息。与 optimizer 相比，它可以更灵活地选择更有效的执行计划
 
-```golang
+```go
 db.Clauses(hints.UseIndex("idx_user_name")).Find(&User{})
 // SELECT * FROM `users` USE INDEX (`idx_user_name`)
 
@@ -367,7 +367,7 @@ db.Clauses(
 
 使用Updates更新多个字段时，不会更新零值，因为GORM判断不出来这个值是未定义还是特地创建的零值。
 
-```golang
+```go
 updatesdb.Model(&usr).Updates(User{Name:"Wang", Age:0})
 ```
 
@@ -375,13 +375,13 @@ updatesdb.Model(&usr).Updates(User{Name:"Wang", Age:0})
 
 - 使用map类型替代结构体。
 
-```golang
+```go
 db.Model(&usr).Update(map[string]interface{}{"age":0})
 ```
 
 - 使用select (chain method) 指定更新的字段，被指定的字段即使包含零值也会更新。
 
-```golang
+```go
 db.Model(&usr).Select("age").Update("age", 0)
 ```
 
@@ -389,7 +389,7 @@ db.Model(&usr).Select("age").Update("age", 0)
 
 同理使用`Where`在查询字段时，如果使用结构体，也会出现这个问题。
 
-```golang
+```go
 db.Where(&usr).First(&usr)
 ```
 
@@ -397,7 +397,7 @@ db.Where(&usr).First(&usr)
 
 GORM对一些特殊字段进行封装支持，可以参考 https://GORM.io/docs/data_types.html
 
-```golang
+```go
 type UserWithJSON struct {
   GORM.Model
   Name       string
