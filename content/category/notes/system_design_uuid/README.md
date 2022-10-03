@@ -49,7 +49,7 @@ categories:
 
 常见的方式。一般来说全球唯一。[UUID](https://en.wikipedia.org/wiki/Universally_unique_identifier)是一类算法的统称，具体有不同的实现。UUID的有点是每台机器可以独立产生ID，理论上保证不会重复，所以天然是分布式的，MongoDB的UUID就是由`timestamp+machineID+ProgressID+Counter`构成。
 
-```text
+```sql
 UUID uuid = UUID.randomUUID();// 23e15798-f8e6-44f3-90e5-11c43aeb5f36
 ```
 
@@ -97,7 +97,7 @@ UUID uuid = UUID.randomUUID();// 23e15798-f8e6-44f3-90e5-11c43aeb5f36
 
 1). 创建64位的自增id：
 
-```text
+```sql
 CREATE TABLE `uid_sequence` (
 `id` bigint(20) unsigned NOT NULL auto_increment,
 `stub` char(1) NOT NULL default '',
@@ -113,7 +113,7 @@ SELECT * from uid_sequence：
 
 2.如果我需要一个全局的唯一的64位uid，则执行：
 
-```text
+```sql
 REPLACE INTO uid_sequence (stub) VALUES ('a');SELECT LAST_INSERT_ID();
 ```
 
