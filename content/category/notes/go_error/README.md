@@ -45,7 +45,7 @@ categories:
 
 第一类错误处理就是我所说的_sentinel errors_。
 
-```golang
+```go
 if err == ErrSomething { … }
 ```
 
@@ -55,7 +55,7 @@ if err == ErrSomething { … }
 
 使用 `sentinel` 值是灵活性最小的错误处理策略，因为调用者必须使用等于运算符，将结果与预先声明的值进行比较（如下代码）。 
 
-```golang
+```go
 buf := make([]byte, 100)
 n, err := r.Read(buf)
 buf = buf[:n]
@@ -66,7 +66,7 @@ if err == io.EOF {
 
 **（错误实践）**当您想要提供更多上下文时就会出现问题，因为返回一个不同的错误会破坏相等检查。即使是用心良苦的使用 `fmt.Errorf` 为错误添加一些上下文，将使调用者的相等测试失败。 调用者转而被迫查看  `error`的 `Error` 方法的输出，以查看它是否与特定字符串匹配。
 
-```golang
+```go
 func readfile(path string) error {
   err := openfile(path)
   if err != nil {
@@ -117,13 +117,13 @@ func main() {
 
 `Error types` 是我想讨论的Go错误处理的第二种形式。
 
-```golang
+```go
 if err, ok := err.(SomeType); ok { … }
 ```
 
 错误类型是您创建的实现错误接口的类型。 在此示例中，`MyError` 类型跟踪文件和行，以及解释所发生情况的消息。
 
-```golang
+```go
 type MyError struct {
 	Msg string
 	File string
@@ -139,7 +139,7 @@ return &MyError{"Something happened", “server.go", 42}
 
 由于 `MyError error` 是一种类型，因此调用者可以使用类型断言从错误中提取额外的上下文。
 
-```golang
+```go
 err := something()
 switch err := err.(type) {
 case nil:
@@ -155,7 +155,7 @@ default:
 
 一个很好的例子是 `os.PathError` 类型，它通过它试图执行的操作和它试图使用的文件来注释底层错误。
 
-```golang
+```go
 // PathError records an error and the operation
 // and file path that caused it.
 type PathError struct {
@@ -189,7 +189,7 @@ func (e *PathError) Error() string
 
 这就是不透明的错误处理 - 只返回错误而不假设其内容。 如果采用此方式，则错误处理可以作为调试辅助工具，变得非常有用。
 
-```golang
+```go
 import “github.com/quux/bar”
 
 func fn() error {
@@ -211,7 +211,7 @@ func fn() error {
 
 在这种情况下，我们可以断言错误实现了特定的行为，而不是断言错误是特定的类型或值。 考虑这个例子：
 
-```golang
+```go
 type temporary interface {
 	Temporary() bool
 }
@@ -235,7 +235,7 @@ func IsTemporary(err error) bool {
 
 让我想到了第二句Go谚语，我想谈谈; 不要仅仅检查错误，优雅地处理它们。 你能用以下代码提出一些问题吗？
 
-```golang
+```go
 func AuthenticateRequest(r *Request) error {
 	err := authenticate(r.User)
 	if err != nil {
@@ -247,7 +247,7 @@ func AuthenticateRequest(r *Request) error {
 
 一个明显的建议是，函数的五行可以替换为:
 
-```golang
+```go
 return authenticate(r.User)
 ```
 
@@ -259,7 +259,7 @@ return authenticate(r.User)
 
 Donovan和Kernighan的_The Go Programming Language_建议您使用 `fmt.Errorf` 向错误路径添加上下文
 
-```golang
+```go
 func AuthenticateRequest(r *Request) error {
 	err := authenticate(r.User)
 	if err != nil {
@@ -275,7 +275,7 @@ func AuthenticateRequest(r *Request) error {
 
 传统的错误生成方式如下：
 
-```golang
+```go
 err := errors.New("kerboom")
 fmt.Printf("%v\n", err) // 打印出"kerboom"字符串
 ```
@@ -284,14 +284,14 @@ fmt.Printf("%v\n", err) // 打印出"kerboom"字符串
 
 我想建议一种方法来为错误添加上下文，为此，我将介绍一个简单的包。 该代码在 [`github.com/pkg/errors`](https://link.juejin.cn?target=https%3A%2F%2Fgodoc.org%2Fgithub.com%2Fpkg%2Ferrors) 提供。 错误包有两个主要函数：
 
-```golang
+```go
 // Wrap annotates cause with a message.
 func Wrap(cause error, message string) error
 ```
 
 第一个函数是 `Wrap`，它接收一个错误和一段消息，并产生一个新的错误。
 
-```golang
+```go
 // Cause unwraps an annotated error.
 func Cause(err error) error
 ```
@@ -300,7 +300,7 @@ func Cause(err error) error
 
 使用这两个函数，我们现在可以注释任何错误，并在需要检查时恢复底层错误。 考虑一个将文件内容读入内存的函数的例子。
 
-```golang
+```go
 func ReadFile(path string) ([]byte, error) {
 	f, err := os.Open(path)
 	if err != nil {
@@ -318,7 +318,7 @@ func ReadFile(path string) ([]byte, error) {
 
 我们将使用此函数编写一个函数来读取配置文件，然后从 `main` 调用它。
 
-```golang
+```go
 func ReadConfig() ([]byte, error) {
 	home := os.Getenv("HOME")
 	config, err := ReadFile(filepath.Join(home, ".settings.xml"))
@@ -342,7 +342,7 @@ could not read config: open failed: open /Users/dfc/.settings.xml: no such file 
 
 因为 `errors.Wrap` 会产生堆栈错误，所以我们可以检查该堆栈以获取其他调试信息。 这又是一个相同的例子，但这次我们用 `fmt.Println` 替换 `errors.Print`
 
-```golang
+```go
 func main() {
 	_, err := ReadConfig()
 	if err != nil {
@@ -364,7 +364,7 @@ open /Users/dfc/.settings.xml: no such file or directory
 
 现在我们已经介绍了包装错误生成堆栈的概念，我们需要讨论反向操作，展开它们。 这是 `errors.Cause` 函数的域。
 
-```golang
+```go
 // IsTemporary returns true if err is temporary.
 func IsTemporary(err error) bool {
 	te, ok := errors.Cause(err).(temporary)
@@ -378,7 +378,7 @@ func IsTemporary(err error) bool {
 
 最后，我想提一下：你应该只处理一次错误。 处理错误意味着检查错误值并做出决定。
 
-```golang
+```go
 func Write(w io.Writer, buf []byte) {
 	w.Write(buf)
 }
@@ -388,7 +388,7 @@ func Write(w io.Writer, buf []byte) {
 
 但是，针对单个错误做出多个决策也存在问题。
 
-```golang
+```go
 func Write(w io.Writer, buf []byte) error {
 	_, err := w.Write(buf)
 	if err != nil {
@@ -406,7 +406,7 @@ func Write(w io.Writer, buf []byte) error {
 
 因此，您在日志文件中获得了重复的行的堆栈，但是在程序的顶部，您将获得没有原始错误的任何上下文。 有人使用Java吗？
 
-```golang
+```go
 func Write(w io.Write, buf []byte) error {
 	_, err := w.Write(buf)
 	return errors.Wrap(err, "write failed")

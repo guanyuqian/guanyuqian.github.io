@@ -118,7 +118,7 @@ SOLID 的第一个原则 S 是单一职责原则。
 
 因此`嵌入`是一个强大的工具，允许 Go 的类型对扩展开放。
 
-```golang
+```go
 package main
 
 type A struct {
@@ -147,7 +147,7 @@ func main() {
 
 这是因为 PrintLegs 是在 Cat 类型上定义的。 它需要 Cat 作为它的接收器，因此它会发送到 Cat 的 Legs 方法。Cat 不知道它嵌入的类型，因此嵌入时不能改变其方法集。
 
-```golang
+```go
 package main
 
 type Cat struct {
@@ -179,7 +179,7 @@ func main() {
 
 接收器正是你传入它的函数，函数的第一个参数，并且因为 Go 不支持函数重载，OctoCat 不能替代普通的 Cat 。 
 
-```golang
+```go
 func (c Cat) PrintLegs() {
         fmt.Printf("I have %d legs.", c.Legs())
 }
@@ -211,7 +211,7 @@ func PrintLegs(c Cat) {
 
 io.Reader 接口非常简单； Read 将数据读入提供的缓冲区，并将读取的字节数和读取期间遇到的任何错误返回给调用者。看起来很简单，但非常强大。
 
-```golang
+```go
 type Reader interface {
         // Read reads up to len(buf) bytes into buf.
         Read(buf []byte) (n int, err error)
@@ -236,7 +236,7 @@ type Reader interface {
 
 我可以定义此函数，让我们称之为 `Save`，它将给定的 Document 写入到 `*os.File`。 但是这样做会有一些问题。
 
-```golang
+```go
 // Save writes the contents of doc to the file f.
 func Save(f *os.File, doc *Document) error
 ```
@@ -251,7 +251,7 @@ Save 的签名排除了将数据写入网络位置的选项。假设网络存储
 
 使用 `io.ReadWriteCloser` 我们可以应用接口隔离原则，使用更通用的文件类型的接口来重新定义 `Save`。
 
-```golang
+```go
 // Save writes the contents of doc to the supplied ReadWriterCloser.
 func Save(rwc io.ReadWriteCloser, doc *Document) error
 ```
@@ -264,7 +264,7 @@ func Save(rwc io.ReadWriteCloser, doc *Document) error
 
 其次，通过向 `Save` 提供一个关闭其流的机制，我们继续这种机制以使其看起来像文件类型的东西，这就产生一个问题，`wc` 会在什么情况下关闭。`Save` 可能会无条件地调用 `Close`，抑或在成功的情况下调用 `Close`。
 
-```golang
+```go
 // Save writes the contents of doc to the supplied WriteCloser.
 func Save(wc io.WriteCloser, doc *Document) error
 ```
@@ -273,7 +273,7 @@ func Save(wc io.WriteCloser, doc *Document) error
 
 一个粗略的解决方案是定义一个新类型，它嵌入一个 `io.Writer` 并覆盖 `Close` 方法，以阻止 `Save` 方法关闭底层数据流。
 
-```golang
+```go
 type NopCloser struct {
         io.Writer
 }
@@ -286,7 +286,7 @@ func (c *NopCloser) Close() error { return nil }
 
 一个更好的解决方案是重新定义 `Save` 只接收 `io.Writer`，完全剥离它除了将数据写入流之外做任何事情的责任。
 
-```golang
+```go
 // Save writes the contents of doc to the supplied Writer.
 func Save(w io.Writer, doc *Document) error
 ```
