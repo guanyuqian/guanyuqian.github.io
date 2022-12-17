@@ -25,9 +25,9 @@ publish: false
 ```json
 {
     "title" :"G-Blog",
-    "link"  :"https://www.guanyuqian.com",
+    "link"  :"https://guanyuqian.github.io",
     "desc"  :"Go the extra mile.",
     "email" :"yuqianguan@qq.com",
-    "logo"  :"https://www.guanyuqian.com/logo.png"    
+    "logo"  :"https://guanyuqian.github.io/logo.png"    
 }
 ```

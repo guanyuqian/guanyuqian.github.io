@@ -14,7 +14,7 @@ publish: false
  - 研究生/ECNU SE
  - E-Mail：[yuqianguan@qq.com](mailto:the_sam@foxmail.com)
  - Github：[@guanyuqian ](http://github.com/guanyuqian)
- - 个人网站：[www.guanyuqian.com](http://www.guanyuqian.com)
+ - 个人网站：[guanyuqian.github.io](http://guanyuqian.github.io)
 
 
   <!-- more -->
