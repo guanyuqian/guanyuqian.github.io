@@ -30,7 +30,7 @@ categories:
 
 ## 前言
 
-之前学习过Redis5的一些设计与实现，并且记录在了[《Redis 5 设计与源码分析》 学习笔记](https://www.guanyuqian.com/content/category/notes/Redis5DesignAndSourceCodeAnalysis/) 中。
+之前学习过Redis5的一些设计与实现，并且记录在了[《Redis 5 设计与源码分析》 学习笔记](https://guanyuqian.github.io/content/category/notes/Redis5DesignAndSourceCodeAnalysis/) 中。
 
 其中最令人佩服的是Redis5的一些数据结构的设计，能够做到空间或者时间上面的极致。
 

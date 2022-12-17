@@ -69,7 +69,7 @@ publish: true
 
 记录前序子数组中的最大值`preMax`，满足`nums[i] > preMax`才入栈，否则说明当前元素仍处于乱序子数组之中。
 
-该方法解法类似这题： [无序数组中找到左侧比他小右侧比他大的数](www.guanyuqian.com/content/blogs/algorithm/ThePivotElements)
+该方法解法类似这题： [无序数组中找到左侧比他小右侧比他大的数](guanyuqian.github.io/content/blogs/algorithm/ThePivotElements)
 
 
 

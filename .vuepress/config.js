@@ -11,9 +11,9 @@ module.exports = {
     //      },
     // ],
     ["@vuepress-reco/vuepress-plugin-rss", {
-        site_url: 'https://www.guanyuqian.com',
+        site_url: 'https://guanyuqian.github.io',
     }], ["vuepress-plugin-boxx"], ['sitemap', {
-        hostname: 'https://www.guanyuqian.com',
+        hostname: 'https://guanyuqian.github.io',
         dateFormatter: val =>{
             return new Date().toISOString()
         }
@@ -125,7 +125,7 @@ module.exports = {
             "placeholder": "说点什么吧...",
         },
         feed: {
-            canonical_base: 'http://www.guanyuqian.com/',
+            canonical_base: 'http://guanyuqian.github.io/',
         },
         "subSidebar": "auto",
         //在所有页面中启用自动生成子侧边栏，原 sidebar 仍然兼容
@@ -154,7 +154,7 @@ module.exports = {
             },
             {
                 "text": "订阅",
-                "link": "https://www.guanyuqian.com/rss.xml",
+                "link": "https://guanyuqian.github.io/rss.xml",
                 "icon": "reco-rss"
             },
             {
@@ -182,10 +182,10 @@ module.exports = {
         "friendLink": [
         {
             "title" :"G-Blog",
-            "link"  :"https://www.guanyuqian.com",
+            "link"  :"https://guanyuqian.github.io",
             "desc"  :"Go the extra mile.",
             "email" :"yuqianguan@qq.com",
-            "logo"  :"https://www.guanyuqian.com/logo.png"    
+            "logo"  :"https://guanyuqian.github.io/logo.png"    
         },
         {
             "title":"妄越",

@@ -43,7 +43,7 @@ categories:
 
 解决方法是维护一个已遍历元素的最大值`pre_max`，判断是否比这个值大即可。
 
-该方法解法类似这题：[无序数组中找到左侧比他小右侧比他大的数](www.guanyuqian.com/content/blogs/algorithm/findUnsortedSubarray)
+该方法解法类似这题：[无序数组中找到左侧比他小右侧比他大的数](guanyuqian.github.io/content/blogs/algorithm/findUnsortedSubarray)
 
 ```go
 import "fmt"
