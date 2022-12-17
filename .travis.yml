@@ -11,7 +11,7 @@ install:
 script:
   - yarn build
   # github自动链接外部域名
-  - echo 'guanyuqian.github.io' > docs/CNAME
+  # - echo 'guanyuqian.github.io' > docs/CNAME
   - cd docs
   - git init
   - git config --global user.name "guanyuqian"    #gh-pages显示发布的名字
