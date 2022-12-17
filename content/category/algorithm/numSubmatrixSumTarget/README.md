@@ -66,7 +66,7 @@ categories:
 - 时间复杂度：$\mathcal{O}(m^2  \times n)$，其中 `m` 和 `n` 分别是矩阵 matrix 的行数和列数。
 - 空间复杂度：$\mathcal{O}(n)$
 
-在`O(1)`时间复杂度求二维矩阵的局域和，可以根据容斥定理。本博客有过类似的题解，见[二维区域和检索 - 矩阵不可变](https://guanyuqian.github.io/content/category/algorithm/SumRegion) 。
+在`O(1)`时间复杂度求二维矩阵的局域和，可以根据容斥定理。本博客有过类似的题解，见[二维区域和检索 - 矩阵不可变](https://www.guanyuqian.com/content/category/algorithm/SumRegion) 。
 
 枚举`x1,x2`，然后在`y`确定的时候用哈希表来降低复杂度，即可在规定时间内完成计算。
 

@@ -1,6 +1,6 @@
 language: node_js
 node_js:
-  - lts/*
+  - 16
 
 before_install:
   - export TZ='Asia/Shanghai' # 设置时区
@@ -11,7 +11,7 @@ install:
 script:
   - yarn build
   # github自动链接外部域名
-  # - echo 'guanyuqian.github.io' > docs/CNAME
+  - echo 'www.guanyuqian.com' > docs/CNAME
   - cd docs
   - git init
   - git config --global user.name "guanyuqian"    #gh-pages显示发布的名字

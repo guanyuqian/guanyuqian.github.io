@@ -95,7 +95,7 @@ install:
   - npm ci
 script:
   - npm run build
-  - echo 'guanyuqian.github.io' > CNAME
+  - echo 'www.guanyuqian.com' > CNAME
 
 after_script:
   - cd docs

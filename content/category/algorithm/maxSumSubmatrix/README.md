@@ -65,7 +65,7 @@ categories:
 
 求二维矩阵的局域和，可以根据容斥定理。
 
-本博客有过类似的题解，见[二维区域和检索 - 矩阵不可变](https://guanyuqian.github.io/content/category/algorithm/SumRegion) 。
+本博客有过类似的题解，见[二维区域和检索 - 矩阵不可变](https://www.guanyuqian.com/content/category/algorithm/SumRegion) 。
 
 ### 解法1： 暴力求解
 
@@ -128,7 +128,7 @@ func maxSumSubmatrix(matrix [][]int, k int) int {
 - 时间复杂度：$\mathcal{O}(n^2 * m log(m))$
 - 空间复杂度：$\mathcal{O}(nm)$
 
-在[不超过K的最大连续子数组和](https://guanyuqian.github.io/content/category/algorithm/subarraySum2) 中，有一种思想是利用有序集合的方式来储存前缀和，然后通过二分查找来代替一个维度的遍历，提示效率。
+在[不超过K的最大连续子数组和](https://www.guanyuqian.com/content/category/algorithm/subarraySum2) 中，有一种思想是利用有序集合的方式来储存前缀和，然后通过二分查找来代替一个维度的遍历，提示效率。
 
 这一题也可以利用这种思想，设子矩阵的上下两行为`b_row`与`e_row`，其左右设为`b_col`与`e_col`。假设在确定上下两行的情况下，矩形的面积可以表达为：
 $$
@@ -141,7 +141,7 @@ $$
 
 只要用一个有序集合维护所有$area(b\_row,e\_row,o\_col,b\_col)$，那么就可以用二分法加速查找符合要求的元素。
 
-这里go实现的简易有序集合，参考本博客的[Go语言有序集合的简单实现](https://guanyuqian.github.io/content/category/algorithm/orderSetOfGo)。
+这里go实现的简易有序集合，参考本博客的[Go语言有序集合的简单实现](https://www.guanyuqian.com/content/category/algorithm/orderSetOfGo)。
 
 代码解法：
 

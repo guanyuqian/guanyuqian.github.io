@@ -59,7 +59,7 @@ categories:
 
 查找不超过**k**的方法，使用有序列表或者有序集合维护前缀和数组`prefix[]`，然后利用二分法在`O(nlogn)`的时间复杂度内找到合适的值。
 
-这里有序集合的实现方法参见 [Go语言有序集合的简单实现](https://guanyuqian.github.io/content/category/algorithm/orderSetOfGo)
+这里有序集合的实现方法参见 [Go语言有序集合的简单实现](https://www.guanyuqian.com/content/category/algorithm/orderSetOfGo)
 
 ```go
 import (

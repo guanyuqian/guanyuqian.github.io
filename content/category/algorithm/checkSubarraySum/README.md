@@ -68,7 +68,7 @@ categories:
 - 时间复杂度：$\mathcal{O}(n)$
 - 空间复杂度：$\mathcal{O}(n)$
 
-前序算法为：求 [和为K的连续子数组](https://guanyuqian.github.io/content/category/algorithm/subarraySum/)，可在`O(1)` 时间求解。
+前序算法为：求 [和为K的连续子数组](https://www.guanyuqian.com/content/category/algorithm/subarraySum/)，可在`O(1)` 时间求解。
 
 考虑k的倍数，这里有一个性质，当 `prefixSums[q]−prefixSums[p]` 为 `k` 的倍数时，`prefixSums[p]` 和 `prefixSums[q]` 除以 `k` 的余数相同。
 

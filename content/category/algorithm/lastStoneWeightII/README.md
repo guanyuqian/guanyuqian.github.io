@@ -73,7 +73,7 @@ categories:
 
 ### 解法1： DP
 
-类似 [目标和](https://guanyuqian.github.io/content/category/algorithm/findTargetSumWays)。
+类似 [目标和](https://www.guanyuqian.com/content/category/algorithm/findTargetSumWays)。
 
 将最终答案视为权重之和，每个权重前面带有 `+` 或 `-` 符号。实际上，每个符号的所有组合都是可能的。
 
