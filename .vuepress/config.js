@@ -147,11 +147,11 @@ module.exports = {
                 "icon": "reco-account",
                 "link": "/content/about/"
             },
-            {
-                "text": "留言",
-                "link": "/content/messageBoard/",
-                "icon": "reco-suggestion"
-            },
+            // {
+            //     "text": "留言",
+            //     "link": "/content/messageBoard/",
+            //     "icon": "reco-suggestion"
+            // },
             {
                 "text": "订阅",
                 "link": "https://guanyuqian.github.io/rss.xml",
