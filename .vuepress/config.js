@@ -117,13 +117,13 @@ module.exports = {
             // 登录页动画球的颜色
             "lineColor": '#c49664' // 登录页动画线的颜色
         },
-        "valineConfig": {
-            "appId": "epAryWjgupelWYSMFf6Io40n-gzGzoHsz",
-            // your appId
-            "appKey": "N8pebj2MJ6flzFWggvnJFMo5",
-            // your appKey
-            "placeholder": "说点什么吧...",
-        },
+        // "valineConfig": {
+        //     "appId": "epAryWjgupelWYSMFf6Io40n-gzGzoHsz",
+        //     // your appId
+        //     "appKey": "N8pebj2MJ6flzFWggvnJFMo5",
+        //     // your appKey
+        //     "placeholder": "说点什么吧...",
+        // },
         feed: {
             canonical_base: 'http://guanyuqian.github.io/',
         },
